@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PiStarDash — Show &amp; Tell</title>
+<style>
+  :root {
+    --accent: #2e7d32;
+    --accent-dark: #1d1d1d;
+    --ink: #1a1a1a;
+    --muted: #5b5b5b;
+    --line: #e8e8e8;
+    --panel: #fafafa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin: 0;
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.6;
+  }
+  a { color: var(--accent); }
+
+  .hero {
+    background: var(--accent-dark);
+    color: #fff;
+    padding: 3.5rem 1.25rem 3rem;
+    text-align: center;
+  }
+  .hero img.icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 22px;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .hero h1 {
+    font-size: 2.1rem;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero p.tagline {
+    font-size: 1.15rem;
+    color: #c9e8cb;
+    margin: 0 0 1.75rem;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+  }
+  .badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #eaeaea;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+  }
+
+  .intro {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 1rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+
+  .features {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1rem 1.25rem 3rem;
+  }
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .feature:last-child { border-bottom: none; }
+  .feature.reverse { flex-direction: row-reverse; }
+  .feature .text { flex: 1 1 340px; min-width: 260px; }
+  .feature .shots {
+    flex: 1 1 380px;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .feature .shots img {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    border: 1px solid var(--line);
+  }
+  .feature .shots img.wide {
+    max-width: 100%;
+  }
+  .feature .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .feature h2 {
+    font-size: 1.5rem;
+    margin: 0 0 0.6rem;
+  }
+  .feature p { color: var(--muted); margin: 0 0 0.6rem; }
+  .feature ul { color: var(--muted); padding-left: 1.1rem; margin: 0.6rem 0 0; }
+  .feature li { margin-bottom: 0.35rem; }
+
+  .cta {
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 3rem 1.25rem;
+    text-align: center;
+  }
+  .cta h2 { margin: 0 0 0.5rem; font-size: 1.4rem; }
+  .cta p { color: var(--muted); max-width: 560px; margin: 0 auto 1.25rem; }
+
+  footer {
+    text-align: center;
+    padding: 2.5rem 1.25rem 3rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  footer a { display: inline-block; margin: 0 0.5rem; }
+
+  @media (max-width: 720px) {
+    .feature, .feature.reverse { flex-direction: column; gap: 1.5rem; }
+    .feature .text { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img class="icon" src="screenshots/app-icon.png" alt="PiStarDash app icon">
+  <h1>PiStarDash</h1>
+  <p class="tagline">A native Android dashboard for your Pi-Star hotspot — live status, talk groups, net control, and a built-in scheduler, no browser required.</p>
+  <div class="badges">
+    <span class="badge">On-device only, no cloud</span>
+    <span class="badge">Built for ham radio operators</span>
+    <span class="badge">Free &amp; open</span>
+  </div>
+</div>
+
+<p class="intro">
+  Pi-Star (<a href="https://www.pistar.uk/" target="_blank" rel="noopener">pistar.uk</a>) runs a great
+  browser dashboard — but a browser isn't built for glancing at who's on frequency, running a net, or
+  planning ahead. PiStarDash connects straight to your Pi-Star's own hotspot and turns that same live
+  data into a fast, native app: automatic discovery, no typing in an IP address, no tab-switching mid-QSO.
+</p>
+
+<div class="features">
+
+  <div class="feature">
+    <div class="text">
+      <div class="eyebrow">Connect</div>
+      <h2>Finds your Pi-Star automatically</h2>
+      <p>Join your Pi-Star's hotspot Wi-Fi and PiStarDash finds it on its own — mDNS discovery with a
+      bounded subnet scan as a fallback, and it remembers the last address that worked so reconnecting
+      is instant. Once connected, a swipeable drawer reaches every screen — Dashboard, Talk Groups,
+      Status, Friends, Schedule — from anywhere in the app.</p>
+    </div>
+    <div class="shots">
+      <img src="screenshots/home-connect.png" alt="PiStarDash home screen discovering Pi-Star devices on the network">
+      <img src="screenshots/drawer-nav.jpg" alt="PiStarDash's app-wide navigation drawer, open over the Net Logger screen">
+    </div>
+  </div>
+
+  <div class="feature reverse">
+    <div class="text">
+      <div class="eyebrow">Dashboard</div>
+      <h2>See who's talking, right now</h2>
+      <p>A live current-caller card — callsign, resolved name, city/state/country with a flag, mode, and
+      target talkgroup — backed by a scrolling Gateway Activity log of everything heard recently. Tap any
+      callsign anywhere in the app for a full detail popup, with an automatic RadioID.net lookup.</p>
+    </div>
+    <div class="shots">
+      <img src="screenshots/live-caller.png" alt="PiStarDash showing a live caller card and Gateway Activity log">
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="text">
+      <div class="eyebrow">Net Control</div>
+      <h2>Run a net with a real check-in roster</h2>
+      <p>"Open Net" starts a session-based roster built for actually running a net, not just watching
+      traffic go by: check-ins land in an auto-heard queue first, and a drag (or long-press) confirms them
+      into a numbered roster — that confirmation step <em>is</em> the verification.</p>
+      <ul>
+        <li>Drag-to-reorder the confirmed roster as check-ins come in</li>
+        <li>Mark a caller "lost" without losing their place in the log</li>
+        <li>Per-check-in suffixes (/M, /P, /QRP, district changes, and more)</li>
+        <li>Link the session to a Scheduled net so the roster ties back to it</li>
+        <li>One-tap share of the final roster as plain text when the net's done</li>
+      </ul>
+    </div>
+    <div class="shots">
+      <img src="screenshots/dashboard-toggle.jpg" class="wide" alt="PiStarDash dashboard with the Activity/Net Logger segmented toggle, on a tablet">
+      <img src="screenshots/net-logger.jpg" alt="PiStarDash Net Logger watching a net, with an auto-heard queue and a Scheduled net link">
+    </div>
+  </div>
+
+  <div class="feature reverse">
+    <div class="text">
+      <div class="eyebrow">Scheduler</div>
+      <h2>Plan nets, events, and talkgroup changes ahead of time</h2>
+      <p>A real calendar, built in — recurring or one-off nets (with a category: Wellness, Ragchew,
+      Technical, Emergency/ARES, Traffic, and more), plain reminders for things like a hamfest, or a bare
+      "link this talkgroup, then unlink it later" schedule with no net attached at all.</p>
+      <ul>
+        <li>Reminders land right in your phone's own calendar app</li>
+        <li>Talkgroups link automatically ahead of a net's start time, and revert after</li>
+        <li>Tap any day's square to see — or add — what's scheduled for it</li>
+      </ul>
+    </div>
+    <div class="shots">
+      <img src="screenshots/scheduler-calendar.png" alt="PiStarDash Scheduler month view with a recurring net shown on its Saturdays">
+      <img src="screenshots/scheduler-edit.png" alt="PiStarDash Scheduler edit screen for a recurring net with a BrandMeister talkgroup action">
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="text">
+      <div class="eyebrow">Talk Groups</div>
+      <h2>Manage BrandMeister and TGIF, from your phone</h2>
+      <p>Add or drop BrandMeister static/dynamic talkgroups and set your TGIF hotspot link — all routed
+      through your Pi-Star's own admin login, the same way its web dashboard does it, with live catalog
+      lookups so you're picking a real talkgroup name, not guessing at a number.</p>
+    </div>
+    <div class="shots">
+      <img src="screenshots/talk-groups.png" alt="PiStarDash Talk Groups screen managing BrandMeister and TGIF">
+    </div>
+  </div>
+
+  <div class="feature reverse">
+    <div class="text">
+      <div class="eyebrow">Status</div>
+      <h2>Hotspot health, at a glance</h2>
+      <p>CPU load and temperature gauges, service status for every MMDVMHost-managed process, radio
+      info, and DMR repeater/master details — everything Pi-Star's own admin page shows, without the
+      admin page.</p>
+    </div>
+    <div class="shots">
+      <img src="screenshots/status-dashboard.png" alt="PiStarDash Status Dashboard with CPU temperature gauge and service status">
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="text">
+      <div class="eyebrow">Bigger screens</div>
+      <h2>Built for tablets too, not just phones</h2>
+      <p>Landscape and larger screens get a real two-pane layout — the caller card and hardware status
+      alongside a taller Gateway Activity log — instead of a stretched-out phone screen. Handy for a
+      shack tablet left running next to the hotspot.</p>
+    </div>
+    <div class="shots">
+      <img class="wide" src="screenshots/tablet-view.png" alt="PiStarDash on a tablet in landscape, showing a two-pane layout">
+    </div>
+  </div>
+
+</div>
+
+<div class="cta">
+  <h2>Get PiStarDash</h2>
+  <p>PiStarDash requires a Pi-Star hotspot (pistar.uk) — a physical Raspberry Pi-based device — to
+  connect to. It's a companion display for hardware you already own.</p>
+  <p><a href="privacy-policy.html">Privacy Policy</a></p>
+</div>
+
+<footer>
+  Built by an amateur radio operator, for amateur radio operators.<br>
+  <a href="mailto:david.odell@davidodell.com">Contact</a> ·
+  <a href="privacy-policy.html">Privacy</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AT878Sync — Show &amp; Tell</title>
+<style>
+  :root {
+    --accent: #2962ff;
+    --accent-dark: #16233d;
+    --ink: #1a1a1a;
+    --muted: #5b5b5b;
+    --line: #e8e8e8;
+    --panel: #fafafa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin: 0;
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.6;
+  }
+  a { color: var(--accent); }
+
+  .hero {
+    background: var(--accent-dark);
+    color: #fff;
+    padding: 3.5rem 1.25rem 3rem;
+    text-align: center;
+  }
+  .hero img.icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 22px;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .hero h1 {
+    font-size: 2.1rem;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero p.tagline {
+    font-size: 1.15rem;
+    color: #c9d9ff;
+    margin: 0 0 1.75rem;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+  }
+  .badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #eaeaea;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+  }
+
+  .status-banner {
+    background: #fff6e0;
+    border-bottom: 1px solid #f0dfa8;
+    color: #6b5300;
+    text-align: center;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.92rem;
+  }
+  .status-banner strong { color: #4a3900; }
+
+  .intro {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 1rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+
+  .features {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1rem 1.25rem 3rem;
+  }
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .feature:last-child { border-bottom: none; }
+  .feature .text { flex: 1 1 100%; }
+  .feature .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .feature h2 {
+    font-size: 1.5rem;
+    margin: 0 0 0.6rem;
+  }
+  .feature p { color: var(--muted); margin: 0 0 0.6rem; }
+  .feature ul { color: var(--muted); padding-left: 1.1rem; margin: 0.6rem 0 0; }
+  .feature li { margin-bottom: 0.35rem; }
+  .feature .caveat {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    color: #8a6d00;
+    background: #fff6e0;
+    border: 1px solid #f0dfa8;
+    border-radius: 8px;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .cta {
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 3rem 1.25rem;
+    text-align: center;
+  }
+  .cta h2 { margin: 0 0 0.5rem; font-size: 1.4rem; }
+  .cta p { color: var(--muted); max-width: 560px; margin: 0 auto 1.25rem; }
+
+  footer {
+    text-align: center;
+    padding: 2.5rem 1.25rem 3rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  footer a { display: inline-block; margin: 0 0.5rem; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img class="icon" src="screenshots/app-icon.png" alt="AT878Sync app icon">
+  <h1>AT878Sync</h1>
+  <p class="tagline">A native Android codeplug programmer for the AnyTone AT-878 — read, edit, and
+  write channels and radio settings over a USB programming cable, no desktop required.</p>
+  <div class="badges">
+    <span class="badge">On-device only, no cloud</span>
+    <span class="badge">Built for ham radio operators</span>
+    <span class="badge">In active development</span>
+  </div>
+</div>
+
+<div class="status-banner">
+  <strong>Early build, not yet released.</strong> Core read/write is working and confirmed on
+  real hardware — this page tracks what's actually done, not a roadmap.
+</div>
+
+<p class="intro">
+  Programming an AnyTone AT-878 today means a Windows-only CPS app and a cable tethered to a
+  desktop. AT878Sync (project name CHIRP-Go) puts that same job on your phone or tablet — plug
+  in the same USB programming cable via OTG, and read or write the radio directly from Android.
+  No manual codeplug data entry either: repeater data is meant to come from
+  <a href="https://www.repeaterbook.com/" target="_blank" rel="noopener">RepeaterBook</a>
+  once that integration lands.
+</p>
+
+<div class="features">
+
+  <div class="feature">
+    <div class="text">
+      <div class="eyebrow">Connect</div>
+      <h2>Talks to the AT-878 over its own USB cable</h2>
+      <p>Plug the radio in over OTG and AT878Sync finds it, requests USB permission, and opens a
+      real connection using the radio's actual handshake protocol — confirmed on real hardware,
+      reporting back the radio's own model/firmware string ("Connected: D878UV2V101").</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="text">
+      <div class="eyebrow">Channels</div>
+      <h2>Read, edit, and write your channel list</h2>
+      <p>A filterable channel list (search by name or frequency) with an FM/DMR badge per row.
+      Tap a channel to open a full tabbed editor — Basic, Digital, Analog, and Raw — covering
+      name, frequency, offset, power, tone/CTCSS/DCS, DMR color code and timeslot, scan list,
+      and every other documented field, laid out to match the official CPS's own groupings.</p>
+      <ul>
+        <li>Edits are local until you explicitly write them back to the radio</li>
+        <li>A confirmation step always stands between an edit and a real write — never auto-push</li>
+        <li>Read/write confirmed working end-to-end on real hardware, including a name-only
+        edit round-trip that left every other byte untouched</li>
+      </ul>
+      <span class="caveat">Frequency/offset writes are implemented and tested on the same
+      read-modify-write path as name; some less-common per-channel fields are still read-only
+      pending further protocol confirmation.</span>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="text">
+      <div class="eyebrow">Radio Settings</div>
+      <h2>General Settings, mapped tab by tab</h2>
+      <p>The AT-878's radio-wide "Optional Setting" dialog — Work Mode, Power-on, Alert Tones,
+      Display, GPS/Ranging, VFO Scan, Auto Repeater, Record, Volume/Audio, Vox/BT, STE, FM,
+      Power Save, Key Function, Other, and Digital Func — reproduced as the same tabbed layout,
+      with each field's real live value shown once confirmed against the radio's own protocol.</p>
+      <p>Several tabs — Digital Func, Record, and Volume/Audio — are fully mapped end to end;
+      others are filled in incrementally as each field's byte offset is confirmed by capturing
+      and diffing real traffic from the official desktop CPS.</p>
+      <span class="caveat">Reading is live and working; writing General Settings back to the
+      radio isn't built yet — this screen is read-only for now.</span>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="text">
+      <div class="eyebrow">Safety</div>
+      <h2>Built so a bad write can't brick your radio</h2>
+      <p>Writes go one field at a time with each response verified before moving to the next,
+      stop immediately at the first failure (reporting exactly what failed), and never touch the
+      radio without an explicit confirmation dialog first. A session's edits stay in memory until
+      you write them or explicitly exit — nothing is silently discarded on a dropped connection.</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="text">
+      <div class="eyebrow">Design</div>
+      <h2>A real Material 3 interface, not a debug tool</h2>
+      <p>A dedicated color/type/spacing system, status pills for FM/DMR, bordered section cards,
+      and a two-column layout on tablets — verified on both a phone and a tablet, not just a
+      phone-shaped emulator.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta">
+  <h2>About AT878Sync</h2>
+  <p>AT878Sync requires an AnyTone AT-878 and its USB programming cable. It's not yet published —
+  the AT-878 driver is being built out fully before any other radio is added, and before a public
+  release.</p>
+  <p><a href="privacy-policy.html">Privacy Policy</a></p>
+</div>
+
+<footer>
+  Built by an amateur radio operator, for amateur radio operators.<br>
+  <a href="mailto:david.odell@davidodell.com">Contact</a> ·
+  <a href="privacy-policy.html">Privacy</a>
+</footer>
+
+</body>
+</html>

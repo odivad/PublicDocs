@@ -25,21 +25,25 @@
 <body>
 
 <h1>Privacy Policy — PiStarDash</h1>
-<p class="updated">Last updated: August 24, 2026</p>
+<p class="updated">Last updated: September 5, 2026</p>
 
 <p>PiStarDash is developed by David O'Dell ("we", "us"). This policy explains how the
 PiStarDash Android app handles data.</p>
 
 <h2>Summary</h2>
-<p>PiStarDash does not collect, transmit, or share any personal data with us or with any
-third party. The app has no backend and no cloud component — it runs entirely on your
-device.</p>
+<p>PiStarDash has no user accounts and no backend or cloud component of its own — everything
+it stores lives only on your device. To provide certain features it connects directly to
+your own Pi-Star device and to a small number of public amateur-radio lookup services,
+described in detail below. Outside of those direct, in-app-triggered connections, we do not
+collect, sell, or share your data with anyone.</p>
 
 <h2>What the App Does</h2>
 <p>PiStarDash connects directly, over your local network or your phone's hotspot connection,
 to a Pi-Star device (an amateur radio digital voice hotspot you own and control) and
 displays that device's own dashboard data — caller activity, talk groups, mode and network
-status — in a native app interface.</p>
+status — in a native app interface. It also offers optional features (a Friends contact
+list, a net-logger check-in roster, and a net/event Scheduler) that store data you enter
+directly on your device.</p>
 
 <h2>Data the App Handles</h2>
 <ul>
@@ -47,8 +51,30 @@ status — in a native app interface.</p>
     device): stored only on your device, encrypted at rest using Android's Keystore-backed
     encrypted storage. These credentials are sent only to your own Pi-Star device, over your
     local network connection, to perform the actions you request (e.g. viewing or managing
-    talk groups). They are never sent to us, never logged, and never transmitted to any third
-    party or external server.</li>
+    talk groups). <strong>This connection uses plain HTTP, not HTTPS</strong>, because
+    Pi-Star's own admin interface does not support TLS — the same limitation applies to any
+    browser or tool that connects to your Pi-Star device directly. Your Wi-Fi/hotspot
+    connection itself is still protected by WPA2/WPA3 encryption; this only affects
+    encryption at the application layer. Your credentials are never sent to us, never logged,
+    and never transmitted to any third party or external server.</li>
+  <li><strong>Callsigns you look up or save as Friends</strong> are sent to
+    <a href="https://database.radioid.net">radioid.net</a>'s public database API, over
+    HTTPS, to retrieve publicly available registration info (name, city, state, country,
+    last heard) for that callsign — the same information visible on radioid.net's own
+    website. Only the callsign itself is sent; nothing else about you or your device.</li>
+  <li><strong>Talkgroup names</strong> are looked up from BrandMeister's
+    (api.brandmeister.network) and TGIF's (api.tgif.network) public talkgroup directories,
+    over HTTPS, so the app can show a human-readable name instead of a raw number. No
+    personal data is included in these requests.</li>
+  <li><strong>Friends list, net-logger sessions, and Scheduler entries</strong> (callsigns,
+    names, phone/email/social links, notes, an optional saved photo, and scheduled net/event
+    times) are data you choose to enter, stored only in a local database on your device. It
+    is never transmitted anywhere by the app.</li>
+  <li><strong>Calendar access</strong> (only if you use the optional Scheduler feature): with
+    your permission, PiStarDash writes reminder events directly to your phone's own calendar
+    app. Those events are stored by your calendar provider (e.g. your Google account, if
+    that's the calendar you chose) exactly as any calendar event you created yourself would
+    be — PiStarDash does not separately collect or receive this data back.</li>
   <li><strong>Network/device information</strong> (e.g. Wi-Fi SSID, local network discovery of
     the Pi-Star device) is used only on-device, to locate and connect to your Pi-Star hotspot.
     It is not transmitted anywhere else.</li>
@@ -56,15 +82,31 @@ status — in a native app interface.</p>
 
 <h2>What We Do Not Do</h2>
 <ul>
-  <li>We do not operate any server that receives data from this app.</li>
+  <li>We do not operate any server that stores or receives your data.</li>
   <li>We do not collect analytics, advertising identifiers, or usage tracking of any kind.</li>
-  <li>We do not share, sell, or transmit any data to third parties.</li>
+  <li>We do not sell your data, or share it with anyone beyond the specific, in-app-triggered
+    lookups described above (which you control — e.g. a RadioID lookup only happens for a
+    callsign you look up or save).</li>
 </ul>
 
 <h2>Data Retention and Deletion</h2>
-<p>All data (including your saved Pi-Star credential) is stored locally on your device.
-Uninstalling the app, or clearing its data through Android's app settings, permanently
-deletes everything the app has stored.</p>
+<p>All data PiStarDash stores — your Friends list, net-logger history, Scheduler entries, and
+saved Pi-Star credential — lives only on your device. We do not hold a separate copy of any
+of it, so there is nothing on our end that needs a separate deletion request.</p>
+<p>To delete your data:</p>
+<ul>
+  <li><strong>Delete one item at a time:</strong> in the Friends screen, tap a contact and
+    choose Remove from Friends; in the Net Logger, close or clear a session to remove its
+    roster.</li>
+  <li><strong>Delete everything at once:</strong> uninstall PiStarDash, or open Android
+    Settings → Apps → PiStarDash → Storage → Clear Data. This immediately and permanently
+    deletes all Friends, net-logger history, Scheduler entries, and your saved Pi-Star
+    credential from your device.</li>
+</ul>
+<p>Deletion is immediate — there is no retention period, because nothing is kept anywhere
+else once it's removed from your device. (Calendar events created by the Scheduler feature
+live in your own calendar app/account and are managed and deleted there, the same as any
+other event you created.)</p>
 
 <h2>Children's Privacy</h2>
 <p>PiStarDash is a utility app for amateur radio operators and is not directed at children.
@@ -75,8 +117,8 @@ It does not knowingly collect data from anyone, regardless of age.</p>
 revised "Last updated" date.</p>
 
 <h2>Contact</h2>
-<p>Questions about this policy can be sent to:
-<a href="mailto:PiStarDash@mygeeks.com">david.odell@davidodell.com</a></p>
+<p>Questions about this policy, or requests related to your data, can be sent to:
+<a href="mailto:david.odell@davidodell.com">david.odell@davidodell.com</a></p>
 
 </body>
 </html>

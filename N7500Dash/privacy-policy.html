@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — N7500 Dash</title>
+<title>Privacy Policy — N7500 Dashboard</title>
 <style>
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -19,60 +19,84 @@
   h2 { font-size: 1.2rem; margin-top: 2rem; border-bottom: 1px solid #eee; padding-bottom: 0.3rem; }
   ul { padding-left: 1.25rem; }
   li { margin-bottom: 0.5rem; }
-  a { color: #d3201b; }
+  a { color: #1b8f42; }
 </style>
 </head>
 <body>
 
-<h1>Privacy Policy — N7500 Dash</h1>
-<p class="updated">Effective date: September 14, 2026</p>
+<h1>Privacy Policy — N7500 Dashboard</h1>
+<p class="updated">Effective date: September 16, 2026</p>
 
-<p>N7500 Dash ("the app") is a radio-control utility for the VGC/Vero VR-N7500 and its
+<p>N7500 Dashboard ("the app") is a radio-control utility for the VGC/Vero VR-N7500 and its
 Bluetooth-controlled "Benshi" sibling radios (BTech UV-Pro, Radioddity GA-5WB, Vero
 VR-N75/VR-N76/VR-N7600, BTech GMRS-Pro, Radtel RT-660), developed by David ODell.</p>
 
 <h2>Data Collection</h2>
-<p>The app does not collect, transmit, or share any personal data. It does not use
-analytics, advertising, or crash-reporting services of any kind.</p>
+<p>The app does not use analytics, advertising, or crash-reporting services of any kind, and has
+no account system or backend server of its own. The one exception, described in full below, is
+the optional Roam feature: when you use it, your approximate location is sent to RepeaterBook.com
+to look up nearby repeaters. Nothing else the app does ever leaves your device.</p>
 
 <h2>What Data the App Handles</h2>
 <ul>
   <li>Radio channel and configuration data, read from your radio over a direct Bluetooth
     connection, is stored <strong>locally on your device only</strong> so you can view and
-    edit it before choosing to write it back to the radio.</li>
-  <li>This data never leaves your device. It is not uploaded to any server, cloud service,
-    or third party. The app has no backend server of its own.</li>
+    edit it before choosing to write it back to the radio. It is never uploaded anywhere.</li>
+  <li>Your own RepeaterBook API token, if you enter one (see Roam, below), is stored locally on
+    your device, encrypted using Android's own hardware-backed Keystore. It is never sent
+    anywhere except to RepeaterBook.com itself, to authenticate a Roam lookup.</li>
 </ul>
 
-<h2>Permissions</h2>
+<h2>Roam and Auto Roam (Location Data)</h2>
+<p>Roam is opt-in — nothing about it runs unless you tap it or turn on Auto Roam yourself. When
+it runs:</p>
+<ul>
+  <li>Your phone's current location (latitude/longitude) is read using Android's own location
+    services, then sent to <a href="https://www.repeaterbook.com/">RepeaterBook.com</a>'s public
+    API, along with your RepeaterBook token, to search for nearby repeaters. RepeaterBook.com is
+    a third-party service this app does not control — see its own site for its privacy practices.</li>
+  <li>That same location is also passed to Android's built-in reverse-geocoding service (to show
+    a place name like "Austin, TX" above the results) — on most devices this is handled by Google
+    Play services, which may itself transmit the coordinates to Google to resolve an address. This
+    app does not send your location to Google directly; it asks the operating system for a place
+    name and Android decides how to answer that request.</li>
+  <li><strong>Auto Roam</strong>, once turned on, repeats this process automatically — checking
+    your location roughly every 5 minutes and re-running Roam only once you've moved past a
+    distance you choose (5–20 miles) since the last lookup — until you turn it back off. This only
+    runs while the app is open or recently used; it does not track your location after the app or
+    your phone has been fully closed/restarted.</li>
+  <li>No location data is stored anywhere except the coordinates and place name of your own most
+    recent Roam fetch, kept locally on your device (the same way any other app setting is) so the
+    app can compare against them the next time Auto Roam checks. This is never transmitted
+    anywhere except as described above.</li>
+</ul>
+
+<h2>Other Permissions</h2>
 <ul>
   <li><strong>Bluetooth (scan and connect)</strong> — required to find and communicate with
     your radio. Used only for that purpose; the app does not scan for or connect to any
     other Bluetooth device.</li>
-  <li><strong>Location</strong> — on Android versions before 12, the operating system
-    classifies Bluetooth device scanning as location-adjacent and requires this permission
-    to perform it. The app does not use your location for any other purpose, and does not
-    read or record it. On Android 12 and later, this permission is not requested at all —
-    Bluetooth scanning uses a newer Android permission that isn't location-related.</li>
-  <li><strong>Internet access</strong> — currently used only to check Google Play for app
-    updates (via Google's standard In-App Update mechanism); otherwise unused by any feature
-    in the app today. It is also declared in preparation for a planned future feature
-    (looking up nearby repeaters via <a href="https://www.repeaterbook.com/">RepeaterBook.com</a>
-    using your own RepeaterBook API key). This policy will be updated with the specifics of
-    what is transmitted before that feature ships.</li>
+  <li><strong>Location (Bluetooth scanning)</strong> — on Android versions before 12, the
+    operating system classifies Bluetooth device scanning as location-adjacent and requires this
+    permission to perform it, even though no location data is actually read or used for that
+    purpose. On Android 12 and later, this permission is not requested for Bluetooth at all — a
+    newer, non-location Android permission is used instead. (This is separate from the Location
+    permission Roam requests for its own, described above.)</li>
+  <li><strong>Internet access</strong> — used to check Google Play for app updates (via Google's
+    standard In-App Update mechanism), and for Roam's RepeaterBook lookups described above.</li>
 </ul>
 
 <h2>Data Retention and Deletion</h2>
 <p>All app data is stored in the app's own private storage on your device. Uninstalling the
-app deletes this data. Nothing is retained anywhere else.</p>
+app deletes this data. Nothing is retained anywhere else, other than whatever RepeaterBook.com
+itself may retain about a Roam request on its own servers — see its privacy policy for that.</p>
 
 <h2>Children's Privacy</h2>
 <p>The app is not directed at children and does not knowingly collect data from anyone.</p>
 
 <h2>Changes to This Policy</h2>
-<p>This policy will be updated if the app's data practices change (for example, when
-RepeaterBook integration is added), and the effective date above will be updated
-accordingly.</p>
+<p>This policy will be updated if the app's data practices change, and the effective date above
+will be updated accordingly.</p>
 
 <h2>Contact</h2>
 <p>Questions about this policy can be sent to:

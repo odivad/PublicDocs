@@ -143,6 +143,9 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     border: 1px solid var(--line);
   }
+  .feature .shots img.wide {
+    max-width: 100%;
+  }
   .feature .eyebrow {
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -299,6 +302,28 @@
     </div>
     <div class="shots">
       <img src="screenshots/settings.png" alt="N7500 Dashboard settings page with RepeaterBook token, Roam radius, and Auto Roam distance picker">
+    </div>
+  </div>
+
+  <div class="feature reverse">
+    <div class="text">
+      <div class="eyebrow">Getting Started with Roam</div>
+      <h2>Get your own free RepeaterBook token</h2>
+      <p>Roam needs your own personal RepeaterBook token — it's free, and takes under a minute:</p>
+      <ul>
+        <li>Log into (or create) your account at
+          <strong>repeaterbook.com/dashboard/index.php</strong></li>
+        <li>Go to <strong>repeaterbook.com/user/api_apps.php</strong> — "API Apps &amp; Tokens"</li>
+        <li>Find <strong>RepeaterBook Python Client (App #114)</strong> in the list of already-
+          approved apps and generate a personal token under it — no separate app registration or
+          approval wait needed, it's already set up for exactly this</li>
+        <li>Copy that token, then in N7500 Dashboard go to <strong>All Settings → RepeaterBook</strong>,
+          paste it into the token field, and tap Save</li>
+      </ul>
+    </div>
+    <div class="shots">
+      <img class="wide" src="screenshots/repeaterbook-app114.png" alt="RepeaterBook's API Apps page showing the RepeaterBook Python Client, App #114, with Distributed client and User-app tokens allowed badges">
+      <img src="screenshots/settings.png" alt="N7500 Dashboard's Settings page where the RepeaterBook token gets pasted in">
     </div>
   </div>
 

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David O'Dell — Apps</title>
+<meta name="description" content="Native Android apps for ham radio operators, by David O'Dell.">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #5b5b5b;
+    --line: #e8e8e8;
+    --bg-dark: #0c1015;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    margin: 0;
+    color: var(--ink);
+    background: #fff;
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+
+  .hero {
+    background: var(--bg-dark);
+    color: #fff;
+    padding: 4rem 1.25rem 3.5rem;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 2.2rem;
+    margin: 0 0 0.6rem;
+    letter-spacing: -0.02em;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: #b9c4cf;
+    margin: 0 auto;
+    max-width: 560px;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  .apps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+
+  .card .top {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .card img.icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .card h2 {
+    font-size: 1.25rem;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .card .status {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    display: inline-block;
+    width: fit-content;
+  }
+  .status.dev { background: #fff3d6; color: #8a5a00; }
+  .status.testing { background: #dbeafe; color: #1d4ed8; }
+
+  .card p.desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0.2rem 0 0.4rem;
+    flex-grow: 1;
+  }
+
+  .card .links {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--line);
+  }
+  .card .links a {
+    color: var(--accent, #2962ff);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .card .links a:hover { text-decoration: underline; }
+
+  .card.n7500 { --accent: #1b8f42; }
+  .card.chirpgo { --accent: #2962ff; }
+  .card.pistardash { --accent: #2e7d32; }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 0 1.25rem 3rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>David O'Dell — Apps</h1>
+  <p>Native Android apps for ham radio operators — on-device, no cloud accounts, no nonsense.</p>
+</div>
+
+<main>
+  <div class="apps">
+
+    <div class="card n7500">
+      <div class="top">
+        <img class="icon" src="N7500Dash/screenshots/app-icon.png" alt="N7500 Dashboard app icon">
+        <h2>N7500 Dashboard</h2>
+      </div>
+      <span class="status testing">Preparing for closed testing</span>
+      <p class="desc">Full radio control and channel programming for the VGC/Vero VR-N7500 and its
+      Benshi-protocol siblings — straight from your phone over Bluetooth, no cable required.</p>
+      <div class="links">
+        <a href="N7500Dash/show-and-tell.html">Show &amp; tell</a>
+        <a href="N7500Dash/privacy-policy.html">Privacy policy</a>
+      </div>
+    </div>
+
+    <div class="card chirpgo">
+      <div class="top">
+        <img class="icon" src="CHIRPGo/screenshots/app-icon.png" alt="AT878Sync app icon">
+        <h2>AT878Sync</h2>
+      </div>
+      <span class="status dev">Early build, in development</span>
+      <p class="desc">A native Android codeplug programmer for the AnyTone AT-878 — read, edit, and
+      write channels and radio settings over a USB programming cable, no desktop required.</p>
+      <div class="links">
+        <a href="CHIRPGo/show-and-tell.html">Show &amp; tell</a>
+        <a href="CHIRPGo/privacy-policy.html">Privacy policy</a>
+      </div>
+    </div>
+
+    <div class="card pistardash">
+      <div class="top">
+        <img class="icon" src="pistardash/screenshots/app-icon.png" alt="PiStarDash app icon">
+        <h2>PiStarDash</h2>
+      </div>
+      <span class="status testing">Free &amp; open</span>
+      <p class="desc">A native Android dashboard for your Pi-Star hotspot — live status, talk
+      groups, net control, and a built-in scheduler, no browser required.</p>
+      <div class="links">
+        <a href="pistardash/show-and-tell.html">Show &amp; tell</a>
+        <a href="pistardash/privacy-policy.html">Privacy policy</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  &copy; David O'Dell
+</footer>
+
+</body>
+</html>

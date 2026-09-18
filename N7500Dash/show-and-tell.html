@@ -1,348 +1,469 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>N7500 Dashboard — Show &amp; Tell</title>
-<style>
-  :root {
-    --accent: #1b8f42;
-    --accent-dark: #0c1a10;
-    --ink: #1a1a1a;
-    --muted: #5b5b5b;
-    --line: #e8e8e8;
-    --panel: #fafafa;
-  }
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    margin: 0;
-    color: var(--ink);
-    background: #fff;
-    line-height: 1.6;
-  }
-  a { color: var(--accent); }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>N7500 Dashboard — Show &amp; Tell</title>
+    <style>
+      :root {
+        --accent: #1b8f42;
+        --accent-dark: #0c1a10;
+        --ink: #1a1a1a;
+        --muted: #5b5b5b;
+        --line: #e8e8e8;
+        --panel: #fafafa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
+          sans-serif;
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        line-height: 1.6;
+      }
+      a {
+        color: var(--accent);
+      }
 
-  .hero {
-    background: var(--accent-dark);
-    color: #fff;
-    padding: 3.5rem 1.25rem 3rem;
-    text-align: center;
-  }
-  .hero img.icon {
-    width: 96px;
-    height: 96px;
-    border-radius: 22px;
-    margin-bottom: 1.25rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-  }
-  .hero h1 {
-    font-size: 2.1rem;
-    margin: 0 0 0.5rem;
-    letter-spacing: -0.02em;
-  }
-  .hero p.tagline {
-    font-size: 1.15rem;
-    color: #b9f0c6;
-    margin: 0 0 1.75rem;
-    max-width: 560px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero .badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    justify-content: center;
-  }
-  .badge {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #eaeaea;
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px;
-    font-size: 0.85rem;
-  }
+      .hero {
+        background: var(--accent-dark);
+        color: #fff;
+        padding: 3.5rem 1.25rem 3rem;
+        text-align: center;
+      }
+      .hero img.icon {
+        width: 96px;
+        height: 96px;
+        border-radius: 22px;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+        margin: 0 0 0.5rem;
+        letter-spacing: -0.02em;
+      }
+      .hero p.tagline {
+        font-size: 1.15rem;
+        color: #b9f0c6;
+        margin: 0 0 1.75rem;
+        max-width: 560px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        justify-content: center;
+      }
+      .badge {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #eaeaea;
+        padding: 0.35rem 0.85rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+      }
 
-  .status-banner {
-    background: #fff6e0;
-    border-bottom: 1px solid #f0dfa8;
-    color: #6b5300;
-    text-align: center;
-    padding: 0.85rem 1.25rem;
-    font-size: 0.92rem;
-  }
-  .status-banner strong { color: #4a3900; }
+      .status-banner {
+        background: #fff6e0;
+        border-bottom: 1px solid #f0dfa8;
+        color: #6b5300;
+        text-align: center;
+        padding: 0.85rem 1.25rem;
+        font-size: 0.92rem;
+      }
+      .status-banner strong {
+        color: #4a3900;
+      }
 
-  .intro {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2.5rem 1.25rem 1rem;
-    text-align: center;
-    color: var(--muted);
-    font-size: 1.05rem;
-  }
+      .intro {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 2.5rem 1.25rem 1rem;
+        text-align: center;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
 
-  .radios {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 1rem 1.25rem 0;
-    text-align: center;
-  }
-  .radios .label {
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.72rem;
-    color: var(--muted);
-    margin-bottom: 0.6rem;
-  }
-  .radios .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-  }
-  .radios .chip {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    color: var(--ink);
-    padding: 0.3rem 0.75rem;
-    border-radius: 999px;
-    font-size: 0.85rem;
-  }
+      .radios {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 1rem 1.25rem 0;
+        text-align: center;
+      }
+      .radios .label {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin-bottom: 0.6rem;
+      }
+      .radios .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+      .radios .chip {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        padding: 0.3rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+      }
 
-  .features {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 1rem 1.25rem 3rem;
-  }
-  .feature {
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .feature:last-child { border-bottom: none; }
-  .feature.reverse { flex-direction: row-reverse; }
-  .feature.text-only { flex-direction: column; text-align: center; }
-  .feature .text { flex: 1 1 340px; min-width: 260px; }
-  .feature.text-only .text { max-width: 640px; }
-  .feature .shots {
-    flex: 1 1 380px;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .feature .shots img {
-    max-width: 260px;
-    width: 100%;
-    height: auto;
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    border: 1px solid var(--line);
-  }
-  .feature .shots img.wide {
-    max-width: 100%;
-  }
-  .feature .eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.78rem;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-  }
-  .feature h2 {
-    font-size: 1.5rem;
-    margin: 0 0 0.6rem;
-  }
-  .feature p { color: var(--muted); margin: 0 0 0.6rem; }
-  .feature ul { color: var(--muted); padding-left: 1.1rem; margin: 0.6rem 0 0; text-align: left; }
-  .feature li { margin-bottom: 0.35rem; }
+      .features {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 1rem 1.25rem 3rem;
+      }
+      .feature {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 2.5rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .feature:last-child {
+        border-bottom: none;
+      }
+      .feature.reverse {
+        flex-direction: row-reverse;
+      }
+      .feature.text-only {
+        flex-direction: column;
+        text-align: center;
+      }
+      .feature .text {
+        flex: 1 1 340px;
+        min-width: 260px;
+      }
+      .feature.text-only .text {
+        max-width: 640px;
+      }
+      .feature .shots {
+        flex: 1 1 380px;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .feature .shots img {
+        max-width: 260px;
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+        border: 1px solid var(--line);
+      }
+      .feature .shots img.wide {
+        max-width: 100%;
+      }
+      .feature .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.78rem;
+        color: var(--accent);
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+      }
+      .feature h2 {
+        font-size: 1.5rem;
+        margin: 0 0 0.6rem;
+      }
+      .feature p {
+        color: var(--muted);
+        margin: 0 0 0.6rem;
+      }
+      .feature ul {
+        color: var(--muted);
+        padding-left: 1.1rem;
+        margin: 0.6rem 0 0;
+        text-align: left;
+      }
+      .feature li {
+        margin-bottom: 0.35rem;
+      }
 
-  .cta {
-    background: var(--panel);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 3rem 1.25rem;
-    text-align: center;
-  }
-  .cta h2 { margin: 0 0 0.5rem; font-size: 1.4rem; }
-  .cta p { color: var(--muted); max-width: 620px; margin: 0 auto 1.25rem; }
+      .cta {
+        background: var(--panel);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 3rem 1.25rem;
+        text-align: center;
+      }
+      .cta h2 {
+        margin: 0 0 0.5rem;
+        font-size: 1.4rem;
+      }
+      .cta p {
+        color: var(--muted);
+        max-width: 620px;
+        margin: 0 auto 1.25rem;
+      }
 
-  footer {
-    text-align: center;
-    padding: 2.5rem 1.25rem 3rem;
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-  footer a { display: inline-block; margin: 0 0.5rem; }
+      footer {
+        text-align: center;
+        padding: 2.5rem 1.25rem 3rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      footer a {
+        display: inline-block;
+        margin: 0 0.5rem;
+      }
 
-  @media (max-width: 720px) {
-    .feature, .feature.reverse { flex-direction: column; gap: 1.5rem; }
-    .feature .text { text-align: center; }
-    .feature ul { text-align: left; }
-  }
-</style>
-</head>
-<body>
-
-<div class="hero">
-  <img class="icon" src="screenshots/app-icon.png" alt="N7500 Dashboard app icon">
-  <h1>N7500 Dashboard</h1>
-  <p class="tagline">Full radio control and channel programming for the VGC/Vero VR-N7500 and its
-  Benshi-protocol siblings — straight from your phone over Bluetooth, no cable required.</p>
-  <div class="badges">
-    <span class="badge">On-device only, no cloud</span>
-    <span class="badge">Built for ham radio operators</span>
-    <span class="badge">Free &amp; open</span>
-  </div>
-</div>
-
-<div class="status-banner">
-  <strong>Preparing for closed testing.</strong> Every feature on this page is built and verified
-  live on real hardware — this tracks what's actually done, not a roadmap.
-</div>
-
-<p class="intro">
-  These are headless, phone-controlled radios — no keypad, no display, no way to program a
-  channel without an app. N7500 Dashboard is that app: connect over Bluetooth, and every part of
-  the radio's live state and stored channel memory shows up on your phone in real time, editable
-  right there, with a real confirmation step standing between an edit and anything actually sent
-  to the radio.
-</p>
-
-<div class="radios">
-  <div class="label">Built and tested against</div>
-  <div class="chips"><span class="chip">Vero VR-N7500</span></div>
-</div>
-
-<div class="features">
-
-  <div class="feature">
-    <div class="text">
-      <div class="eyebrow">Dashboard</div>
-      <h2>Everything live, one screen</h2>
-      <p>Frequency, mode, signal strength, squelch, TX power, and Work Mode (Single/Dual/Scan) —
-      all synced from the radio in real time, not just read once at connect. A squelch slider sits
-      right on the S-meter: hold for half a second to unlock it, then drag — a deliberate "lock"
-      so it can't move by accident.</p>
-      <ul>
-        <li>Slot A/B channel tiles colored to match the VFO display, so what's active and what's
-          standby is obvious at a glance</li>
-        <li>Live TX/RX glow on whichever channel is actually keyed up or receiving</li>
-        <li>Squelch, power level, and work mode all write to the radio the instant you touch
-          them — no separate "save" step, the same as turning a physical knob</li>
-      </ul>
+      @media (max-width: 720px) {
+        .feature,
+        .feature.reverse {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+        .feature .text {
+          text-align: center;
+        }
+        .feature ul {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero">
+      <img
+        class="icon"
+        src="screenshots/app-icon.png"
+        alt="N7500 Dashboard app icon"
+      />
+      <h1>N7500 Dashboard</h1>
+      <p class="tagline">
+        Full radio control and channel programming for the VGC/Vero VR-N7500 and
+        its Benshi-protocol siblings — straight from your phone over Bluetooth,
+        no cable required.
+      </p>
+      <div class="badges">
+        <span class="badge">On-device only, no cloud</span>
+        <span class="badge">Built for ham radio operators</span>
+        <span class="badge">Free &amp; open</span>
+      </div>
     </div>
-    <div class="shots">
-      <img src="screenshots/dashboard.png" alt="N7500 Dashboard home screen with VFO display, squelch slider, and channel grid">
-    </div>
-  </div>
 
-  <div class="feature reverse">
-    <div class="text">
-      <div class="eyebrow">Channel Editor</div>
-      <h2>Every field the radio actually has</h2>
-      <p>Frequency, name, repeater offset (with automatic RX calculation), CTCSS/DCS tone, TX
-      power, bandwidth, scan membership, mute, and more — a real numeric keyboard for frequency
-      entry, not a custom keypad. Fields are cross-checked against the vendor's own app so nothing
-      here is guesswork.</p>
-      <ul>
-        <li>An app-only "location" note per channel (never sent to the radio) for remembering
-          what a repeater actually is</li>
-        <li>Delete a channel cleanly, or exclude it from the scan cycle, without opening the full
-          editor</li>
-      </ul>
+    <div class="status-banner">
+      <strong>Preparing for closed testing.</strong> Every feature on this page
+      is built and verified live on real hardware — this tracks what's actually
+      done, not a roadmap.
     </div>
-    <div class="shots">
-      <img src="screenshots/channel-edit.png" alt="N7500 Dashboard's full channel editor with frequency, offset, tone, and power fields">
-    </div>
-  </div>
 
-  <div class="feature">
-    <div class="text">
-      <div class="eyebrow">Safety</div>
-      <h2>Never writes to your radio by accident</h2>
-      <p>Any edit that rewrites the radio's stored channel memory shows a confirmation step first —
-      always. Long-press a channel for quick actions: Edit, Delete, and two that are deliberately
-      instant (Scan on/off and Mute) because they're single-field toggles a driver needs to flip
-      without stopping to confirm every time.</p>
-    </div>
-    <div class="shots">
-      <img src="screenshots/context-menu.png" alt="N7500 Dashboard's long-press channel menu with Edit, Remove from scan, Mute, and Delete">
-    </div>
-  </div>
+    <p class="intro">
+      These are headless, phone-controlled radios — no keypad, no display, no
+      way to program a channel without an app. N7500 Dashboard is that app:
+      connect over Bluetooth, and every part of the radio's live state and
+      stored channel memory shows up on your phone in real time, editable right
+      there, with a real confirmation step standing between an edit and anything
+      actually sent to the radio.
+    </p>
 
-  <div class="feature reverse">
-    <div class="text">
-      <div class="eyebrow">Groups &amp; Favorites</div>
-      <h2>Save, load, and swap full channel sets</h2>
-      <p>A Group is a saved, named 32-channel set — save what's currently loaded, or start fresh
-      and build one from scratch. Built-in GMRS and MURS templates load the FCC's own band plan in
-      one tap, at the correct power tier for each. Up to 3 Favorites stay pinned in every Group, so
-      the channels you use most are never one load away from disappearing.</p>
+    <div class="radios">
+      <div class="label">Built and tested against</div>
+      <div class="chips"><span class="chip">Vero VR-N7500</span></div>
     </div>
-    <div class="shots">
-      <img src="screenshots/groups.png" alt="N7500 Dashboard Groups tab with saved MURS and GMRS channel groups">
+
+    <div class="features">
+      <div class="feature">
+        <div class="text">
+          <div class="eyebrow">Dashboard</div>
+          <h2>Everything live, one screen</h2>
+          <p>
+            Frequency, mode, signal strength, squelch, TX power, and Work Mode
+            (Single/Dual/Scan) — all synced from the radio in real time, not
+            just read once at connect. A squelch slider sits right on the
+            S-meter: hold for half a second to unlock it, then drag — a
+            deliberate "lock" so it can't move by accident.
+          </p>
+          <ul>
+            <li>
+              Slot A/B channel tiles colored to match the VFO display, so what's
+              active and what's standby is obvious at a glance
+            </li>
+            <li>
+              Live TX/RX glow on whichever channel is actually keyed up or
+              receiving
+            </li>
+            <li>
+              Squelch, power level, and work mode all write to the radio the
+              instant you touch them — no separate "save" step, the same as
+              turning a physical knob
+            </li>
+          </ul>
+        </div>
+        <div class="shots">
+          <img
+            src="screenshots/dashboard.png"
+            alt="N7500 Dashboard home screen with VFO display, squelch slider, and channel grid"
+          />
+        </div>
+      </div>
+
+      <div class="feature reverse">
+        <div class="text">
+          <div class="eyebrow">Channel Editor</div>
+          <h2>Every field the radio actually has</h2>
+          <p>
+            Frequency, name, repeater offset (with automatic RX calculation),
+            CTCSS/DCS tone, TX power, bandwidth, scan membership, mute, and more
+            — a real numeric keyboard for frequency entry, not a custom keypad.
+            Fields are cross-checked against the vendor's own app so nothing
+            here is guesswork.
+          </p>
+          <ul>
+            <li>
+              An app-only "location" note per channel (never sent to the radio)
+              for remembering what a repeater actually is
+            </li>
+            <li>
+              Delete a channel cleanly, or exclude it from the scan cycle,
+              without opening the full editor
+            </li>
+          </ul>
+        </div>
+        <div class="shots">
+          <img
+            src="screenshots/channel-edit.png"
+            alt="N7500 Dashboard's full channel editor with frequency, offset, tone, and power fields"
+          />
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="text">
+          <div class="eyebrow">Safety</div>
+          <h2>Never writes to your radio by accident</h2>
+          <p>
+            Any edit that rewrites the radio's stored channel memory shows a
+            confirmation step first — always. Long-press a channel for quick
+            actions: Edit, Delete, and two that are deliberately instant (Scan
+            on/off and Mute) because they're single-field toggles a driver needs
+            to flip without stopping to confirm every time.
+          </p>
+        </div>
+        <div class="shots">
+          <img
+            src="screenshots/context-menu.png"
+            alt="N7500 Dashboard's long-press channel menu with Edit, Remove from scan, Mute, and Delete"
+          />
+        </div>
+      </div>
+
+      <div class="feature reverse">
+        <div class="text">
+          <div class="eyebrow">Groups &amp; Favorites</div>
+          <h2>Save, load, and swap full channel sets</h2>
+          <p>
+            A Group is a saved, named 32-channel set — save what's currently
+            loaded, or start fresh and build one from scratch. Built-in GMRS and
+            MURS templates load the FCC's own band plan in one tap, at the
+            correct power tier for each. Up to 3 Favorites stay pinned in every
+            Group, so the channels you use most are never one load away from
+            disappearing.
+          </p>
+        </div>
+        <div class="shots">
+          <img
+            src="screenshots/groups.png"
+            alt="N7500 Dashboard Groups tab with saved MURS and GMRS channel groups"
+          />
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="text">
+          <div class="eyebrow">Roam</div>
+          <h2>Find the nearest repeaters, wherever you are</h2>
+          <p>
+            Roam pulls the closest repeaters from RepeaterBook based on your
+            phone's actual location and loads them straight into the radio — see
+            the fetch location right above the results, with a one-tap Save that
+            names the new Group after that same place. Auto Roam keeps it fresh:
+            turn it on and it re-fetches on its own once you've actually moved
+            far enough (5, 10, 15, or 20 miles, your choice) to need new
+            repeaters — not on a timer, on distance.
+          </p>
+        </div>
+        <div class="shots">
+          <img
+            src="screenshots/settings.png"
+            alt="N7500 Dashboard settings page with RepeaterBook token, Roam radius, and Auto Roam distance picker"
+          />
+        </div>
+      </div>
+
+      <div class="feature reverse">
+        <div class="text">
+          <div class="eyebrow">Getting Started with Roam</div>
+          <h2>Get your own free RepeaterBook token</h2>
+          <p>
+            Roam needs your own personal RepeaterBook token — it's free, and
+            takes under a minute:
+          </p>
+          <ul>
+            <li>
+              Log into (or create) your account at
+              <strong>repeaterbook.com/dashboard/index.php</strong>
+            </li>
+            <li>
+              Go to <strong>repeaterbook.com/user/api_apps.php</strong> — "API
+              Apps &amp; Tokens"
+            </li>
+            <li>
+              Find <strong>RepeaterBook Python Client (App #114)</strong> in the
+              list of already- approved apps and generate a personal token under
+              it — no separate app registration or approval wait needed, it's
+              already set up for exactly this
+            </li>
+            <li>
+              Copy that token, then in N7500 Dashboard go to
+              <strong>All Settings → RepeaterBook</strong>, paste it into the
+              token field, and tap Save
+            </li>
+          </ul>
+        </div>
+        <div class="shots">
+          <img
+            class="wide"
+            src="screenshots/repeaterbook-app114.png"
+            alt="RepeaterBook's API Apps page showing the RepeaterBook Python Client, App #114, with Distributed client and User-app tokens allowed badges"
+          />
+          <img
+            src="screenshots/settings.png"
+            alt="N7500 Dashboard's Settings page where the RepeaterBook token gets pasted in"
+          />
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="feature">
-    <div class="text">
-      <div class="eyebrow">Roam</div>
-      <h2>Find the nearest repeaters, wherever you are</h2>
-      <p>Roam pulls the closest repeaters from RepeaterBook based on your phone's actual location
-      and loads them straight into the radio — see the fetch location right above the results, with
-      a one-tap Save that names the new Group after that same place. Auto Roam keeps it fresh:
-      turn it on and it re-fetches on its own once you've actually moved far enough (5, 10, 15, or
-      20 miles, your choice) to need new repeaters — not on a timer, on distance.</p>
+    <div class="cta">
+      <h2>Get N7500 Dashboard</h2>
+      <p>
+        N7500 Dashboard requires a VGC/Vero VR-N7500 — or a radio in the same
+        Benshi Bluetooth protocol family (Vero VR-N7600/VR-N75/VR-N76, BTECH
+        UV-Pro/UV-50PRO/GMRS-Pro, Radioddity DB50-B/GA-5WB, Retevis RT99/RT78,
+        Radtel RT-660/RN15) — to connect to. Not yet published; closed testing
+        is next.
+      </p>
+      <p><a href="privacy-policy.html">Privacy Policy</a></p>
     </div>
-    <div class="shots">
-      <img src="screenshots/settings.png" alt="N7500 Dashboard settings page with RepeaterBook token, Roam radius, and Auto Roam distance picker">
-    </div>
-  </div>
 
-  <div class="feature reverse">
-    <div class="text">
-      <div class="eyebrow">Getting Started with Roam</div>
-      <h2>Get your own free RepeaterBook token</h2>
-      <p>Roam needs your own personal RepeaterBook token — it's free, and takes under a minute:</p>
-      <ul>
-        <li>Log into (or create) your account at
-          <strong>repeaterbook.com/dashboard/index.php</strong></li>
-        <li>Go to <strong>repeaterbook.com/user/api_apps.php</strong> — "API Apps &amp; Tokens"</li>
-        <li>Find <strong>RepeaterBook Python Client (App #114)</strong> in the list of already-
-          approved apps and generate a personal token under it — no separate app registration or
-          approval wait needed, it's already set up for exactly this</li>
-        <li>Copy that token, then in N7500 Dashboard go to <strong>All Settings → RepeaterBook</strong>,
-          paste it into the token field, and tap Save</li>
-      </ul>
-    </div>
-    <div class="shots">
-      <img class="wide" src="screenshots/repeaterbook-app114.png" alt="RepeaterBook's API Apps page showing the RepeaterBook Python Client, App #114, with Distributed client and User-app tokens allowed badges">
-      <img src="screenshots/settings.png" alt="N7500 Dashboard's Settings page where the RepeaterBook token gets pasted in">
-    </div>
-  </div>
-
-</div>
-
-<div class="cta">
-  <h2>Get N7500 Dashboard</h2>
-  <p>N7500 Dashboard requires a VGC/Vero VR-N7500 — or a radio in the same Benshi Bluetooth
-  protocol family (Vero VR-N7600/VR-N75/VR-N76, BTECH UV-Pro/UV-50PRO/GMRS-Pro, Radioddity
-  DB50-B/GA-5WB, Retevis RT99/RT78, Radtel RT-660/RN15) — to connect to. Not yet published; closed
-  testing is next.</p>
-  <p><a href="privacy-policy.html">Privacy Policy</a></p>
-</div>
-
-<footer>
-  Built by an amateur radio operator, for amateur radio operators.<br>
-  <a href="mailto:KC3SST@davidodell.com">Contact</a> ·
-  <a href="privacy-policy.html">Privacy</a>
-</footer>
-
-</body>
+    <footer>
+      Built by an amateur radio operator, for amateur radio operators.<br />
+      <a href="mailto:n7500@mygeeks.com">Contact</a> ·
+      <a href="privacy-policy.html">Privacy</a>
+    </footer>
+  </body>
 </html>

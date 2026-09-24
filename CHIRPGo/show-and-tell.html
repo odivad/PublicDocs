@@ -96,7 +96,28 @@
     border-bottom: 1px solid var(--line);
   }
   .feature:last-child { border-bottom: none; }
-  .feature .text { flex: 1 1 100%; }
+  .feature.reverse { flex-direction: row-reverse; }
+  /* Landscape tablet shots are too wide to sit beside text: stack them under it. */
+  .feature.stack { flex-direction: column; align-items: stretch; gap: 1.5rem; }
+  .feature.stack .text, .feature.stack .shots { flex: none; }
+  .feature .text { flex: 1 1 340px; min-width: 260px; }
+  .feature .shots {
+    flex: 1 1 380px;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .feature .shots img {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    border: 1px solid var(--line);
+  }
+  .feature .shots img.wide { max-width: 100%; }
+  .feature .shots.pair img.wide { max-width: calc(50% - 0.5rem); min-width: 280px; flex: 1 1 280px; }
   .feature .eyebrow {
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -140,6 +161,13 @@
     font-size: 0.9rem;
   }
   footer a { display: inline-block; margin: 0 0.5rem; }
+
+  @media (max-width: 720px) {
+    .feature, .feature.reverse { flex-direction: column; gap: 1.5rem; }
+    .feature .text { text-align: center; }
+    .feature .text ul { text-align: left; }
+    .feature .shots.pair img.wide { max-width: 100%; }
+  }
 </style>
 </head>
 <body>
@@ -147,8 +175,8 @@
 <div class="hero">
   <img class="icon" src="screenshots/app-icon.png" alt="AT878Sync app icon">
   <h1>AT878Sync</h1>
-  <p class="tagline">A native Android codeplug programmer for the AnyTone AT-878 — read, edit, and
-  write channels and radio settings over a USB programming cable, no desktop required.</p>
+  <p class="tagline">A native Android codeplug programmer for the AnyTone AT-878. Read, edit, and
+  write channels, zones, and scan lists over a USB programming cable, with no desktop required.</p>
   <div class="badges">
     <span class="badge">On-device only, no cloud</span>
     <span class="badge">Built for ham radio operators</span>
@@ -158,16 +186,16 @@
 
 <div class="status-banner">
   <strong>Early build, not yet released.</strong> Core read/write is working and confirmed on
-  real hardware — this page tracks what's actually done, not a roadmap.
+  real hardware. This page tracks what's actually done, not a roadmap.
 </div>
 
 <p class="intro">
   Programming an AnyTone AT-878 today means a Windows-only CPS app and a cable tethered to a
-  desktop. AT878Sync (project name CHIRP-Go) puts that same job on your phone or tablet — plug
+  desktop. AT878Sync (project name CHIRP-Go) puts that same job on your phone or tablet: plug
   in the same USB programming cable via OTG, and read or write the radio directly from Android.
-  No manual codeplug data entry either: repeater data is meant to come from
-  <a href="https://www.repeaterbook.com/" target="_blank" rel="noopener">RepeaterBook</a>
-  once that integration lands.
+  Need a new repeater? Look it up on
+  <a href="https://www.repeaterbook.com/" target="_blank" rel="noopener">RepeaterBook</a> and add
+  it as a channel instead of typing it in.
 </p>
 
 <div class="features">
@@ -176,45 +204,97 @@
     <div class="text">
       <div class="eyebrow">Connect</div>
       <h2>Talks to the AT-878 over its own USB cable</h2>
-      <p>Plug the radio in over OTG and AT878Sync finds it, requests USB permission, and opens a
-      real connection using the radio's actual handshake protocol — confirmed on real hardware,
-      reporting back the radio's own model/firmware string ("Connected: D878UV2V101").</p>
+      <p>Plug the radio in over OTG and AT878Sync finds it, asks for USB permission, and opens a
+      real connection using the radio's own handshake. No vendor driver is needed. One Read pulls
+      channels, zones, scan lists, the talkgroups your channels use, roaming, and radio
+      settings in a single session.
+      One Write puts every change back, after you confirm it.</p>
     </div>
   </div>
 
-  <div class="feature">
+  <div class="feature stack">
     <div class="text">
       <div class="eyebrow">Channels</div>
-      <h2>Read, edit, and write your channel list</h2>
-      <p>A filterable channel list (search by name or frequency) with an FM/DMR badge per row.
-      Tap a channel to open a full tabbed editor — Basic, Digital, Analog, and Raw — covering
-      name, frequency, offset, power, tone/CTCSS/DCS, DMR color code and timeslot, scan list,
-      and every other documented field, laid out to match the official CPS's own groupings.</p>
+      <h2>Your whole channel list, as a real table</h2>
+      <p>See every channel with the columns you choose: number, name, frequency, analog/DMR,
+      talkgroup, default scan list, and zones. Sort by tapping a header, search by name or
+      frequency, and filter by mode or zone. On a phone, switch to a compact list instead.</p>
       <ul>
-        <li>Edits are local until you explicitly write them back to the radio</li>
-        <li>A confirmation step always stands between an edit and a real write — never auto-push</li>
-        <li>Read/write confirmed working end-to-end on real hardware, including a name-only
-        edit round-trip that left every other byte untouched</li>
+        <li>Change a channel's talkgroup, default scan list, or zones right from the table</li>
+        <li>Tap anywhere else on a row to open the full channel editor</li>
+        <li>Edits stay on the device, marked <em>Unsaved</em>, until you Write them</li>
       </ul>
-      <span class="caveat">Frequency/offset writes are implemented and tested on the same
-      read-modify-write path as name; some less-common per-channel fields are still read-only
-      pending further protocol confirmation.</span>
+    </div>
+    <div class="shots">
+      <img class="wide" src="screenshots/channel-table.jpg" alt="AT878Sync channel table on a tablet, with number, name, frequency, type, talkgroup, default scan list and zones columns">
+    </div>
+    <div class="shots pair">
+      <img class="wide" src="screenshots/zone-checklist.jpg" alt="Zones checklist opened from a channel's Zones cell in the table">
+      <img class="wide" src="screenshots/channel-editor.jpg" alt="Channel editor with Basic, Digital, Zones and Scan tabs">
     </div>
   </div>
 
-  <div class="feature">
+  <div class="feature stack">
+    <div class="text">
+      <div class="eyebrow">Talkgroups</div>
+      <h2>Your radio's talkgroups, by name</h2>
+      <p>AT878Sync reads the talkgroup list straight from the radio (thousands of entries) and
+      shows each DMR channel's talkgroup by name instead of a bare index. Picking a different
+      one is a searchable list: type part of a name or number and tap.</p>
+      <span class="caveat">The Talkgroups screen is view-only for now. Adding, renaming, and
+      deleting talkgroups is planned.</span>
+    </div>
+    <div class="shots pair">
+      <img class="wide" src="screenshots/talkgroup-picker.jpg" alt="Searchable talkgroup picker filtered to BM31">
+      <img class="wide" src="screenshots/talkgroups.jpg" alt="Talkgroups screen listing the radio's talkgroups with search">
+    </div>
+  </div>
+
+  <div class="feature stack">
+    <div class="text">
+      <div class="eyebrow">Repeater Search</div>
+      <h2>Find a repeater, add it as a channel</h2>
+      <p>Search RepeaterBook near your location or a ZIP code or town, within 10, 25, or 50
+      miles, filtered to analog or DMR and to the bands your radio covers. Tap a result and
+      AT878Sync fills in the frequency, offset, and tone, suggests a name and an empty channel
+      slot, and adds it to your list. Nothing is fetched until you tap Search, and nothing
+      reaches the radio until you Write.</p>
+      <span class="caveat">Uses your own free RepeaterBook token, entered once in App Settings.
+      RadioReference isn't available yet.</span>
+    </div>
+    <div class="shots pair">
+      <img class="wide" src="screenshots/repeater-results.jpg" alt="RepeaterBook search results near Boston showing callsign, frequency, offset, tone, mode and distance">
+      <img class="wide" src="screenshots/repeater-add.jpg" alt="Add as channel dialog with a suggested name and empty channel slot">
+    </div>
+  </div>
+
+  <div class="feature stack">
+    <div class="text">
+      <div class="eyebrow">Zones, Scan Lists &amp; Roaming</div>
+      <h2>The rest of the codeplug, not just channels</h2>
+      <p>Zones and scan lists are read from the radio, shown by name with their channel counts,
+      and written back along with your channels. Roaming channels and roaming zones are read
+      too, with a GPS Roaming Setup card that shows which of the radio's roaming prerequisites
+      are already on.</p>
+    </div>
+    <div class="shots pair">
+      <img class="wide" src="screenshots/scan-lists.jpg" alt="Scan Lists screen showing each list's name and channel count">
+      <img class="wide" src="screenshots/roaming-zones.jpg" alt="Roaming Zones screen with the GPS Roaming Setup checklist expanded">
+    </div>
+  </div>
+
+  <div class="feature stack">
     <div class="text">
       <div class="eyebrow">Radio Settings</div>
       <h2>General Settings, mapped tab by tab</h2>
-      <p>The AT-878's radio-wide "Optional Setting" dialog — Work Mode, Power-on, Alert Tones,
-      Display, GPS/Ranging, VFO Scan, Auto Repeater, Record, Volume/Audio, Vox/BT, STE, FM,
-      Power Save, Key Function, Other, and Digital Func — reproduced as the same tabbed layout,
-      with each field's real live value shown once confirmed against the radio's own protocol.</p>
-      <p>Several tabs — Digital Func, Record, and Volume/Audio — are fully mapped end to end;
-      others are filled in incrementally as each field's byte offset is confirmed by capturing
-      and diffing real traffic from the official desktop CPS.</p>
-      <span class="caveat">Reading is live and working; writing General Settings back to the
-      radio isn't built yet — this screen is read-only for now.</span>
+      <p>The AT-878's radio-wide "Optional Setting" dialog, reproduced in the same tabbed layout
+      as the official CPS, with each field's live value read from the radio and CPS-style
+      dropdowns and switches for editing.</p>
+      <span class="caveat">Reading is live and working. Writing General Settings back to the
+      radio isn't built yet, so edits here are a preview for now.</span>
+    </div>
+    <div class="shots">
+      <img class="wide" src="screenshots/radio-settings.jpg" alt="Radio Settings screen with CPS-style tabs and switches">
     </div>
   </div>
 
@@ -222,20 +302,25 @@
     <div class="text">
       <div class="eyebrow">Safety</div>
       <h2>Built so a bad write can't brick your radio</h2>
-      <p>Writes go one field at a time with each response verified before moving to the next,
-      stop immediately at the first failure (reporting exactly what failed), and never touch the
-      radio without an explicit confirmation dialog first. A session's edits stay in memory until
-      you write them or explicitly exit — nothing is silently discarded on a dropped connection.</p>
+      <p>Nothing can be edited until the radio has been read this session, and a red
+      <em>Read radio to edit</em> reminder stays up until it has. Writes never happen without an
+      explicit confirmation. Each chunk's response is verified before the next is sent, and a
+      write stops at the first failure and reports exactly what failed. Unsaved edits survive
+      an app restart, so nothing is silently lost on a dropped connection.</p>
     </div>
   </div>
 
-  <div class="feature">
+  <div class="feature reverse">
     <div class="text">
-      <div class="eyebrow">Design</div>
-      <h2>A real Material 3 interface, not a debug tool</h2>
-      <p>A dedicated color/type/spacing system, status pills for FM/DMR, bordered section cards,
-      and a two-column layout on tablets — verified on both a phone and a tablet, not just a
-      phone-shaped emulator.</p>
+      <div class="eyebrow">Phone &amp; Tablet</div>
+      <h2>Made for both screens</h2>
+      <p>On a tablet the menu is a pinned icon rail and the channel list becomes a full table.
+      On a phone everything is one tap away in a slide-out menu. It's a native Material 3 app
+      with a dark theme, checked on a real phone and tablet, not just an emulator.</p>
+    </div>
+    <div class="shots">
+      <img src="screenshots/phone-menu.jpg" alt="AT878Sync slide-out menu on a phone">
+      <img src="screenshots/phone-app-settings.jpg" alt="App Settings on a phone with the RepeaterBook token instructions">
     </div>
   </div>
 
@@ -243,9 +328,9 @@
 
 <div class="cta">
   <h2>About AT878Sync</h2>
-  <p>AT878Sync requires an AnyTone AT-878 and its USB programming cable. It's not yet published —
-  the AT-878 driver is being built out fully before any other radio is added, and before a public
-  release.</p>
+  <p>AT878Sync requires an AnyTone AT-878 and its USB programming cable. It's not yet
+  published. The AT-878 driver is being built out fully before any other radio is added, and
+  before a public release.</p>
   <p><a href="privacy-policy.html">Privacy Policy</a></p>
 </div>
 

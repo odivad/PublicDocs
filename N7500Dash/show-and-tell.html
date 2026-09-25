@@ -257,7 +257,7 @@
 
     <div class="status-banner">
       <strong>Now in closed testing on Google Play.</strong> Every screenshot
-      on this page is from the app running against a real VR-N7500 — this
+      on this page is from the real app with a real VR-N7500's channels — this
       tracks what's actually done, not a roadmap.
     </div>
 
@@ -281,15 +281,19 @@
           <div class="eyebrow">Connect</div>
           <h2>Only your radio, not every earbud in range</h2>
           <p>
-            The connect screen lists only devices it knows are radios — ones
-            you've connected to before, or ones named like a radio in this
-            family. Earbuds, car stereos, and watches stay out of the way. If
-            yours isn't listed, one tap on "Not listed?" shows everything
-            nearby.
+            The connect screen starts scanning on its own and lists only
+            devices it knows are radios — radios already paired with your phone
+            first, then any nearby. Earbuds, car stereos, and watches stay out
+            of the way. If yours isn't listed, one tap on "Not listed?" shows
+            everything nearby.
           </p>
           <ul>
             <li>
               Reconnects to your radio on its own the next time it's in range
+            </li>
+            <li>
+              Three short steps instead of a wall of instructions, and a plain
+              explanation before Android asks for Bluetooth or location access
             </li>
             <li>
               No radio handy? "Use offline" lets you browse and edit your
@@ -300,7 +304,7 @@
         <div class="shots">
           <img
             src="screenshots/connect-radios-only.png"
-            alt="N7500 Dashboard connect screen listing only the VR-N7500, with a Not listed? Show all devices (7 hidden) button"
+            alt="N7500 Dashboard connect screen with numbered steps, the paired VR-N7500 listed first, and a Not listed? Show all devices (7 hidden) button"
           />
         </div>
       </div>
@@ -312,9 +316,11 @@
           <p>
             Frequency, mode, signal strength, squelch, TX power, and Work Mode
             (Single/Dual/Scan) — all synced from the radio in real time, not
-            just read once at connect. A squelch slider sits right on the
-            S-meter: hold for half a second to unlock it, then drag — a
-            deliberate "lock" so it can't move by accident.
+            just read once at connect. A row of labeled buttons across the top
+            is both the status and the control: tap Power to step High → Med →
+            Low, tap Mode to step Single → Dual → Scan. A squelch slider sits
+            right on the S-meter: hold for half a second to unlock it, then
+            drag — a deliberate "lock" so it can't move by accident.
           </p>
           <ul>
             <li>
@@ -331,16 +337,64 @@
               the math
             </li>
             <li>
-              Power (L/M/H) and I/II/Scan live in the side menu as one-tap
-              toggles, and write to the radio the instant you tap them — no
-              separate "save" step, the same as turning a physical knob
+              Each Roam channel shows how far away its repeater is, updating as
+              you drive — with a green ↓ while you're getting closer
+            </li>
+            <li>
+              A standard Android layout: a bottom bar on phones, Back works
+              everywhere, and messages with Undo when you remove something
             </li>
           </ul>
         </div>
         <div class="shots">
           <img
             src="screenshots/dashboard.png"
-            alt="N7500 Dashboard home screen with VFO display, squelch slider, and channel grid"
+            alt="N7500 Dashboard Radio screen in dark mode with the VFO display, Connect and Auto Roam buttons, and channel tiles showing distance to each repeater"
+          />
+        </div>
+      </div>
+
+      <div class="feature reverse">
+        <div class="text">
+          <div class="eyebrow">Light &amp; Dark</div>
+          <h2>Readable in the sun, easy on the eyes at night</h2>
+          <p>
+            Pick Light, Dark, or follow your phone (Settings → Theme). In dark
+            mode the radio display glows like a night-lit LCD; in light mode it
+            switches to a daylight LCD — dark digits on a pale backlight, with
+            colors chosen to stay readable in bright sun. On Android 12 and
+            later the rest of the app picks up your phone's own colors.
+          </p>
+        </div>
+        <div class="shots">
+          <img
+            src="screenshots/dashboard-light.png"
+            alt="N7500 Dashboard Radio screen in light mode with a pale green daylight-LCD VFO display and light channel tiles"
+          />
+        </div>
+      </div>
+
+      <div class="feature text-only">
+        <div class="text">
+          <div class="eyebrow">Phone or Tablet</div>
+          <h2>Uses the whole screen on a tablet</h2>
+          <p>
+            On a tablet the navigation moves to a side rail and screens split
+            into two panes: the tuned channel's details and actions sit under
+            the VFO display, and a group's channels open beside the list of
+            groups.
+          </p>
+        </div>
+        <div class="shots">
+          <img
+            class="wide"
+            src="screenshots/tablet-dashboard.png"
+            alt="N7500 Dashboard on a tablet in landscape: VFO display with the tuned channel's details and actions on the left, channel grid on the right"
+          />
+          <img
+            class="wide"
+            src="screenshots/tablet-groups.png"
+            alt="N7500 Dashboard Groups on a tablet in landscape: list of groups on the left, the MURS group's channels and Write to radio on the right"
           />
         </div>
       </div>
@@ -355,6 +409,16 @@
             below, in the same colors as the dashboard. It only appears while a
             radio is connected, so it never clutters your screen for nothing.
           </p>
+          <ul>
+            <li>
+              While connected, a notification shows the current channel with
+              Roam and Disconnect buttons
+            </li>
+            <li>
+              Roam from a Quick Settings tile, a long-press on the app icon, or
+              the home-screen widget
+            </li>
+          </ul>
         </div>
         <div class="shots">
           <img
@@ -369,11 +433,12 @@
           <div class="eyebrow">Channel Editor</div>
           <h2>Every field the radio actually has</h2>
           <p>
-            Frequency, name, repeater offset (with automatic RX calculation),
-            CTCSS/DCS tone, TX power, bandwidth, scan membership, mute, and more
-            — a real numeric keyboard for frequency entry, not a custom keypad.
-            Fields are cross-checked against the vendor's own app so nothing
-            here is guesswork.
+            Enter the frequency you listen on, then transmit as simplex, an
+            offset (one tap for 600 kHz or 5 MHz), or its own frequency. Name,
+            CTCSS/DCS tone, TX power, scan membership, mute, and more — with
+            rarely used settings folded under Advanced. On a phone it opens full
+            screen with Save at the top. Fields are cross-checked against the
+            vendor's own app so nothing here is guesswork.
           </p>
           <ul>
             <li>
@@ -381,15 +446,14 @@
               for remembering what a repeater actually is
             </li>
             <li>
-              Delete a channel cleanly, or exclude it from the scan cycle,
-              without opening the full editor
+              Add the channel to any number of Groups right from the editor
             </li>
           </ul>
         </div>
         <div class="shots">
           <img
             src="screenshots/channel-edit.png"
-            alt="N7500 Dashboard's full channel editor with frequency, offset, tone, and power fields"
+            alt="N7500 Dashboard's full-screen channel editor with RX frequency, name, location, offset, tones, and power"
           />
         </div>
       </div>
@@ -399,11 +463,11 @@
           <div class="eyebrow">Channel Library &amp; Search</div>
           <h2>Fill a channel without typing it in</h2>
           <p>
-            "Search / add from list" in the channel editor pulls from two
-            places: <strong>My Channels</strong>, a library of every channel
-            you've saved before, and <strong>RepeaterBook</strong>, sorted by
-            distance from you. Heading out of town? Type a city, state, or ZIP
-            and search around there instead.
+            The search button in the channel editor pulls from two places: your
+            <strong>Library</strong> of every channel you've saved, and
+            <strong>RepeaterBook</strong> — nearby, around a city, state, or ZIP,
+            or by name or club anywhere. When filling a Group you can pick
+            several at once, up to the room the Group has left.
           </p>
           <ul>
             <li>
@@ -411,15 +475,15 @@
               radio until you tap Save and confirm
             </li>
             <li>
-              The Library screen keeps your saved channels in one place, ready
-              to drop into any Group
+              The Library is one shared list of channels: a channel can be in
+              several Groups, and editing it updates every Group that uses it
             </li>
           </ul>
         </div>
         <div class="shots">
           <img
             src="screenshots/channel-search.png"
-            alt="N7500 Dashboard's Search / add from list dialog showing nearby RepeaterBook repeaters with distances and a search-a-place box"
+            alt="N7500 Dashboard's Search / add from list sheet showing Library and RepeaterBook tabs and saved channels in a grid"
           />
         </div>
       </div>
@@ -430,16 +494,27 @@
           <h2>Never writes to your radio by accident</h2>
           <p>
             Any edit that rewrites the radio's stored channel memory shows a
-            confirmation step first — always. Long-press a channel for quick
-            actions: Edit, Delete, and two that are deliberately instant (Scan
-            on/off and Mute) because they're single-field toggles a driver needs
-            to flip without stopping to confirm every time.
+            confirmation step first — always. Each channel's ⋮ button has quick
+            actions: Edit, Add to Favorites or Groups, Delete, and two that are
+            deliberately instant (Scan on/off and Mute) because they're
+            single-field toggles a driver needs to flip without stopping to
+            confirm every time.
           </p>
+          <ul>
+            <li>
+              Long-press to select several channels at once; changing them all
+              on the radio still asks first
+            </li>
+            <li>
+              Removing a channel from a Group or the Library happens right away,
+              with Undo — it never touches the radio
+            </li>
+          </ul>
         </div>
         <div class="shots">
           <img
             src="screenshots/context-menu.png"
-            alt="N7500 Dashboard's long-press channel menu with Edit, Remove from scan, Mute, and Delete"
+            alt="N7500 Dashboard's channel menu with Edit, Save to Channel Library, Add to Favorites, Add to group(s), Remove from scan, Mute, and Delete"
           />
         </div>
       </div>
@@ -452,11 +527,16 @@
             A Group is a saved, named 32-channel set — save what's currently
             loaded, or start fresh and build one from scratch. Built-in GMRS and
             MURS templates load the FCC's own band plan in one tap, at the
-            correct power tier for each. Up to 3 Favorites stay pinned in every
+            correct power tier for each, and a NOAA Weather template adds the
+            weather channels as receive-only. Up to 3 Favorites stay pinned in every
             Group, so the channels you use most are never one load away from
             disappearing.
           </p>
           <ul>
+            <li>
+              Open a Group to add channels, drag them into order, and write the
+              whole set to the radio in one confirmed step
+            </li>
             <li>
               Share a Group with another operator through Android's share menu
               — email, Messages, Drive, Bluetooth — and import one they sent you
@@ -466,7 +546,11 @@
         <div class="shots">
           <img
             src="screenshots/groups.png"
-            alt="N7500 Dashboard Groups tab with saved MURS and GMRS channel groups"
+            alt="N7500 Dashboard Groups screen with GMRS, MURS, and NERA groups and a New group button"
+          />
+          <img
+            src="screenshots/group-detail.png"
+            alt="N7500 Dashboard's GMRS group open, with Add channel, Add several, draggable channels, and Write to radio"
           />
         </div>
       </div>
@@ -484,11 +568,20 @@
             far enough (5, 10, 15, or 20 miles, your choice) to need new
             repeaters — not on a timer, on distance.
           </p>
+          <ul>
+            <li>
+              Roam is one button on the Radio screen, and it tells you up front
+              if it needs your token or location access
+            </li>
+            <li>
+              Every Roam channel shows its distance from you, live as you drive
+            </li>
+          </ul>
         </div>
         <div class="shots">
           <img
             src="screenshots/settings.png"
-            alt="N7500 Dashboard settings page with RepeaterBook token, Roam radius, and Auto Roam distance picker"
+            alt="N7500 Dashboard Settings with the RepeaterBook token (hidden), Roam search radius, Auto Roam distance, and Theme"
           />
         </div>
       </div>
@@ -518,7 +611,7 @@
             </li>
             <li>
               Copy that token, then in N7500 Dashboard go to
-              <strong>All Settings → RepeaterBook</strong>, paste it into the
+              <strong>Settings → Roam &amp; RepeaterBook</strong>, paste it into the
               token field, and tap Save
             </li>
           </ul>

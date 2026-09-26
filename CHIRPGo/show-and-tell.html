@@ -175,8 +175,8 @@
 <div class="hero">
   <img class="icon" src="screenshots/app-icon.png" alt="AT878Sync app icon">
   <h1>AT878Sync</h1>
-  <p class="tagline">A native Android codeplug programmer for the AnyTone AT-878. Read, edit, and
-  write channels, zones, and scan lists over a USB programming cable, with no desktop required.</p>
+  <p class="tagline">Program your AnyTone AT-878 from your phone or tablet. Plug in the cable
+  you already have and edit your channels, zones, and scan lists right there, no computer needed.</p>
   <div class="badges">
     <span class="badge">On-device only, no cloud</span>
     <span class="badge">Built for ham radio operators</span>
@@ -185,17 +185,18 @@
 </div>
 
 <div class="status-banner">
-  <strong>Early build, not yet released.</strong> Core read/write is working and confirmed on
-  real hardware. This page tracks what's actually done, not a roadmap.
+  <strong>Early build, not yet released.</strong> Reading and writing already work on a real
+  radio. Everything on this page is working today. If it isn't done yet, I say so.
 </div>
 
 <p class="intro">
-  Programming an AnyTone AT-878 today means a Windows-only CPS app and a cable tethered to a
-  desktop. AT878Sync (project name CHIRP-Go) puts that same job on your phone or tablet: plug
-  in the same USB programming cable via OTG, and read or write the radio directly from Android.
-  Need a new repeater? Look it up on
-  <a href="https://www.repeaterbook.com/" target="_blank" rel="noopener">RepeaterBook</a> and add
-  it as a channel instead of typing it in.
+  If you own an AT-878, you know the routine: find the Windows laptop, dig out the cable, open
+  the CPS, and hope you remember where everything is. I wanted to do it from the couch, or from
+  the truck at field day. So I built AT878Sync (project name CHIRP-Go). Plug the same USB
+  programming cable into your phone or tablet with an OTG adapter and you're in. Heard about a
+  repeater you want to try? Look it up on
+  <a href="https://www.repeaterbook.com/" target="_blank" rel="noopener">RepeaterBook</a> and
+  add it with a tap instead of typing frequencies in by hand.
 </p>
 
 <div class="features">
@@ -203,26 +204,25 @@
   <div class="feature">
     <div class="text">
       <div class="eyebrow">Connect</div>
-      <h2>Talks to the AT-878 over its own USB cable</h2>
-      <p>Plug the radio in over OTG and AT878Sync finds it, asks for USB permission, and opens a
-      real connection using the radio's own handshake. No vendor driver is needed. One Read pulls
-      channels, zones, scan lists, the talkgroups your channels use, roaming, and radio
-      settings in a single session.
-      One Write puts every change back, after you confirm it.</p>
+      <h2>Plug in and go</h2>
+      <p>Connect the radio and AT878Sync finds it on its own. Say yes to USB access and you're
+      talking to your radio. There's no driver to hunt down. One Read brings in everything:
+      channels, zones, scan lists, talkgroups, roaming, and radio settings. When you're done,
+      one Write sends it all back, after you give the OK.</p>
     </div>
   </div>
 
   <div class="feature stack">
     <div class="text">
       <div class="eyebrow">Channels</div>
-      <h2>Your whole channel list, as a real table</h2>
-      <p>See every channel with the columns you choose: number, name, frequency, analog/DMR,
-      talkgroup, default scan list, and zones. Sort by tapping a header, search by name or
-      frequency, and filter by mode or zone. On a phone, switch to a compact list instead.</p>
+      <h2>All your channels, laid out the way you want</h2>
+      <p>Your whole channel list in one table. Pick the columns you care about, tap a header to
+      sort, and search by name or frequency. Only want your DMR channels, or just one zone?
+      Filter down to them. On a phone, flip to a simpler list that fits the screen.</p>
       <ul>
-        <li>Change a channel's talkgroup, default scan list, or zones right from the table</li>
-        <li>Tap anywhere else on a row to open the full channel editor</li>
-        <li>Edits stay on the device, marked <em>Unsaved</em>, until you Write them</li>
+        <li>Change a talkgroup, scan list, or zone right in the table</li>
+        <li>Tap a row to open the full channel editor</li>
+        <li>Your changes are marked <em>Unsaved</em> and stay on your device until you Write them</li>
       </ul>
     </div>
     <div class="shots">
@@ -237,12 +237,12 @@
   <div class="feature stack">
     <div class="text">
       <div class="eyebrow">Talkgroups</div>
-      <h2>Your radio's talkgroups, by name</h2>
-      <p>AT878Sync reads the talkgroup list straight from the radio (thousands of entries) and
-      shows each DMR channel's talkgroup by name instead of a bare index. Picking a different
-      one is a searchable list: type part of a name or number and tap.</p>
-      <span class="caveat">The Talkgroups screen is view-only for now. Adding, renaming, and
-      deleting talkgroups is planned.</span>
+      <h2>Talkgroups by name, not by number</h2>
+      <p>Nobody wants to remember which number goes with which talkgroup. AT878Sync pulls your
+      whole talkgroup list off the radio, even if it runs into the thousands, and shows each one
+      by name. To switch, start typing a name or number and tap the one you want.</p>
+      <span class="caveat">For now you can look at your talkgroups but not change them. Adding,
+      renaming, and deleting them is on the list.</span>
     </div>
     <div class="shots pair">
       <img class="wide" src="screenshots/talkgroup-picker.jpg" alt="Searchable talkgroup picker filtered to BM31">
@@ -253,14 +253,14 @@
   <div class="feature stack">
     <div class="text">
       <div class="eyebrow">Repeater Search</div>
-      <h2>Find a repeater, add it as a channel</h2>
-      <p>Search RepeaterBook near your location or a ZIP code or town, within 10, 25, or 50
-      miles, filtered to analog or DMR and to the bands your radio covers. Tap a result and
-      AT878Sync fills in the frequency, offset, and tone, suggests a name and an empty channel
-      slot, and adds it to your list. Nothing is fetched until you tap Search, and nothing
-      reaches the radio until you Write.</p>
-      <span class="caveat">Uses your own free RepeaterBook token, entered once in App Settings.
-      RadioReference isn't available yet.</span>
+      <h2>Found a repeater? Add it in seconds</h2>
+      <p>On the road, or just curious what's nearby? Search RepeaterBook around where you are,
+      or type in a town or ZIP code. Pick 10, 25, or 50 miles, analog or DMR, and you'll only
+      see repeaters your radio can actually use. Tap one and AT878Sync fills in the frequency,
+      offset, and tone, suggests a name, and finds an open channel slot for it. Nothing goes
+      online until you tap Search, and nothing goes to your radio until you Write.</p>
+      <span class="caveat">You'll need a free RepeaterBook token, which you enter once in App
+      Settings. RadioReference isn't supported yet.</span>
     </div>
     <div class="shots pair">
       <img class="wide" src="screenshots/repeater-results.jpg" alt="RepeaterBook search results near Boston showing callsign, frequency, offset, tone, mode and distance">
@@ -271,11 +271,11 @@
   <div class="feature stack">
     <div class="text">
       <div class="eyebrow">Zones, Scan Lists &amp; Roaming</div>
-      <h2>The rest of the codeplug, not just channels</h2>
-      <p>Zones and scan lists are read from the radio, shown by name with their channel counts,
-      and written back along with your channels. Roaming channels and roaming zones are read
-      too, with a GPS Roaming Setup card that shows which of the radio's roaming prerequisites
-      are already on.</p>
+      <h2>More than just channels</h2>
+      <p>Your zones and scan lists show up by name, with how many channels are in each, and any
+      changes go back to the radio along with your channels. Roaming channels and zones come in
+      too. If you're setting up GPS roaming, there's a checklist that shows which radio settings
+      are already on and which still need turning on.</p>
     </div>
     <div class="shots pair">
       <img class="wide" src="screenshots/scan-lists.jpg" alt="Scan Lists screen showing each list's name and channel count">
@@ -286,12 +286,12 @@
   <div class="feature stack">
     <div class="text">
       <div class="eyebrow">Radio Settings</div>
-      <h2>General Settings, mapped tab by tab</h2>
-      <p>The AT-878's radio-wide "Optional Setting" dialog, reproduced in the same tabbed layout
-      as the official CPS, with each field's live value read from the radio and CPS-style
-      dropdowns and switches for editing.</p>
-      <span class="caveat">Reading is live and working. Writing General Settings back to the
-      radio isn't built yet, so edits here are a preview for now.</span>
+      <h2>Your radio settings, right where you'd expect</h2>
+      <p>If you've used the AnyTone CPS, this will feel familiar. The radio's settings are laid
+      out in the same tabs, showing what's actually set on your radio right now, with the same
+      kinds of switches and dropdowns.</p>
+      <span class="caveat">You can see all your settings today. Sending setting changes back to
+      the radio isn't done yet, so changes here won't reach the radio for now.</span>
     </div>
     <div class="shots">
       <img class="wide" src="screenshots/radio-settings.jpg" alt="Radio Settings screen with CPS-style tabs and switches">
@@ -300,23 +300,22 @@
 
   <div class="feature">
     <div class="text">
-      <div class="eyebrow">Safety</div>
-      <h2>Built so a bad write can't brick your radio</h2>
-      <p>Nothing can be edited until the radio has been read this session, and a red
-      <em>Read radio to edit</em> reminder stays up until it has. Writes never happen without an
-      explicit confirmation. Each chunk's response is verified before the next is sent, and a
-      write stops at the first failure and reports exactly what failed. Unsaved edits survive
-      an app restart, so nothing is silently lost on a dropped connection.</p>
+      <div class="eyebrow">Peace of Mind</div>
+      <h2>Your radio only changes when you say so</h2>
+      <p>You always start by reading your radio, so you're working from what's really on it.
+      Nothing gets sent back until you tap Write and say yes. And if the app closes before
+      you're done, your edits will still be there when you come back.</p>
     </div>
   </div>
 
   <div class="feature reverse">
     <div class="text">
       <div class="eyebrow">Phone &amp; Tablet</div>
-      <h2>Made for both screens</h2>
-      <p>On a tablet the menu is a pinned icon rail and the channel list becomes a full table.
-      On a phone everything is one tap away in a slide-out menu. It's a native Material 3 app
-      with a dark theme, checked on a real phone and tablet, not just an emulator.</p>
+      <h2>At home on your phone or tablet</h2>
+      <p>On a tablet you get the big picture: a menu down the side and your channels in a full
+      table. On a phone, everything is tucked into a menu that slides out when you need it.
+      There's a dark theme for late nights, and I've tested it on a real phone and tablet, not
+      just a simulator.</p>
     </div>
     <div class="shots">
       <img src="screenshots/phone-menu.jpg" alt="AT878Sync slide-out menu on a phone">
@@ -328,14 +327,13 @@
 
 <div class="cta">
   <h2>About AT878Sync</h2>
-  <p>AT878Sync requires an AnyTone AT-878 and its USB programming cable. It's not yet
-  published. The AT-878 driver is being built out fully before any other radio is added, and
-  before a public release.</p>
+  <p>You'll need an AnyTone AT-878 and its USB programming cable. AT878Sync isn't out yet.
+  I want to get the AT-878 completely right before adding other radios or releasing it.</p>
   <p><a href="privacy-policy.html">Privacy Policy</a></p>
 </div>
 
 <footer>
-  Built by an amateur radio operator, for amateur radio operators.<br>
+  Built by a ham, for hams.<br>
   <a href="mailto:CHIRPGo@mygeeks.com">Contact</a> ·
   <a href="privacy-policy.html">Privacy</a>
 </footer>

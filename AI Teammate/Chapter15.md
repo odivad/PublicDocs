@@ -2,6 +2,10 @@
 
 ## A Setup Session Led by Your AI — Whichever One You Choose
 
+> **Working edition.** This is the living version of Chapter 15. It is updated as the session gets
+> run on real projects, so it can be ahead of the printed book. What changed since print is listed
+> at the end of the chapter.
+
 Every other chapter in this book is written for you to read. This one is written for an AI to run. You will hand this chapter to your AI — the whole thing — and it will take it from there. It will open a conversation with your team, ask the questions that need to be asked, and build out the ground truth environment based on the answers it receives.
 
 By the end of that session, you will have a working repository scaffold: the AI operating file, the documentation files, the planning structure, the security standards — all of it generated from your team's actual standards, not a generic template. And the AI will have told each person on the team exactly what they own going forward.
@@ -17,6 +21,16 @@ Definition: The version-controlled repository structure, documentation files, an
 Simple Example: An architect's blueprint tells every contractor where the walls go. The ground truth environment tells the AI where the rules are.
 
 What To Remember: The AI doesn't remember your last conversation. The ground truth environment does.
+
+**Term: Shared Operating File**
+
+Definition: An AI operating file that sits above your individual projects — in the folder that holds them all, or in your AI tool's personal settings — and holds the rules every project shares: who has authority, how ideas get approved, how branches and commits work, what always needs a human's go-ahead.
+
+Simple Example: A company handbook covers every department; each department's own procedures cover only what's different about that department. The shared operating file is the handbook. Each project's operating file is the department's procedures.
+
+What To Remember: Write a shared rule once. When it changes, it changes for every project, and no project's copy goes stale.
+
+The setup session looks for a shared operating file before it asks anything else. If you already have one, the AI uses it and only asks what is different about this project. If you don't, it asks whether you want one — worth it as soon as you have a second project.
 
 ## How To Use This Chapter
 
@@ -42,7 +56,7 @@ This is one delivery, not multiple. The AI receives everything at once and manag
 
 Three ways to deliver it (pick one):
 
-- **Best:** Upload this PDF or Word document directly in the AI chat. Then say: "Read this and run the setup session in it."
+- **Best:** Upload this chapter (PDF, Word or Markdown) directly in the AI chat. Then say: "Read this and run the setup session in it." If your AI works inside your project folder (a command-line or IDE tool), point it at the file instead.
 - **Good:** Copy everything from the divider banner to the end of the chapter and paste it as a single message.
 - **Also fine:** Copy the whole chapter including this intro. The AI will recognize the structure and skip straight to running the session.
 
@@ -84,7 +98,14 @@ before moving on. Do not generate any files until you have completed all
 sections.
 
 Begin by introducing yourself. Tell the team what this session will produce
-and approximately how long it will take. Then start Section 0.
+and approximately how long it will take. Then start Section 0, then
+Section 0B, then Sections 1 through 10.
+
+If Section 0B finds or creates a shared operating file, it already answers
+some of the questions below. For those, do not ask again: state what the
+shared file says and ask only, "Is that still true for this project, or
+does this project differ?" Record only the differences in this project's
+files.
 
 If an answer is unclear, ask a follow-up question before moving on.
 If the team is unsure, record the uncertainty and flag it in the output.
@@ -113,7 +134,7 @@ and who made you. Then ask:
 Based on the answers, determine the correct name for the AI operating file:
 
   If the team is using Claude (Anthropic)        → name it  CLAUDE.md
-  If the team is using ChatGPT / GPT-4 (OpenAI) → name it  AGENT.md
+  If the team is using ChatGPT / Codex (OpenAI)  → name it  AGENTS.md
   If the team is using Gemini (Google)           → name it  GEMINI.md
   If the team is using GitHub Copilot            → name it  .github/copilot-instructions.md
   If the team is using another model             → name it  AI-BRIEF.md
@@ -131,6 +152,53 @@ Also note any model-specific behaviors relevant to this team:
 
 Tell the team these things plainly before moving on. They affect how the
 repository needs to be structured and how much context to include in [AI-BRIEF].
+
+
+## SECTION 0B — SHARED RULES ABOVE THIS PROJECT
+
+NOTE: Run this right after Section 0. Rules that every one of the team's
+projects shares belong in one shared operating file above the projects, not
+copied into each project. Find out whether one exists before asking anything
+that it might already answer.
+
+LOOK FOR IT FIRST.
+If you can read the file system, look for an operating file (same name as
+[AI-BRIEF], or any of CLAUDE.md, AGENTS.md, GEMINI.md, AI-BRIEF.md):
+  - in each folder above this project, up to the user's home folder
+    (e.g. a "projects" or "dev" folder that holds all of the team's repos)
+  - in your tool's personal or user-level settings folder, if it has one
+    (e.g. Claude Code: ~/.claude/CLAUDE.md; Codex: ~/.codex/AGENTS.md;
+     Gemini CLI: ~/.gemini/GEMINI.md)
+If you cannot read the file system (e.g. a web chat), ask the team whether
+they have one, and ask them to paste it.
+
+IF YOU FIND ONE:
+  - Tell the team where it is and summarize what it covers.
+  - Ask: "Should this project follow it?" and "Is anything in it wrong or
+    out of date?" Fix the shared file only if the team says so — it
+    governs every project, not just this one.
+  - From here on, treat its answers as given (see YOUR ROLE above).
+
+IF YOU DON'T FIND ONE, ask:
+  - Does the team have, or expect to have, other projects?
+  - Would the same rules apply to them — authority, the ideas/tasks
+    approval gate, branching and commits, security baseline, what always
+    needs a human's go-ahead?
+  - If yes: should I create a shared operating file? Where should it live?
+    Offer the two choices plainly:
+      (a) the folder that holds all the team's projects — every project
+          inside it can use it, and it travels with that folder;
+      (b) your AI tool's personal settings folder — it applies to your
+          sessions everywhere, but only for you, on that computer.
+    Recommend (a) for team rules and (b) for one person's preferences.
+  - If no: put everything in this project's [AI-BRIEF], as usual.
+
+EITHER WAY, tell the team plainly whether their AI tool reads a file above
+the project on its own. Some tools load operating files from parent folders
+automatically; others only read the one in the project, or only a personal
+file. So this project's [AI-BRIEF] will always start with a line naming the
+shared file's location and telling the AI to read it first — that keeps it
+working whichever tool the team uses later.
 
 
 ## SECTION 1 — PROJECT BASICS
@@ -322,6 +390,56 @@ Ask these questions:
   - What is the rollback procedure if a deployment goes wrong?
     Is it documented anywhere?
 
+  BRANCHES AND COMMITS
+  - Do you have a branching workflow? What is the main branch called
+    (main, master, trunk), and how does work get from a branch into it?
+  - Do branches follow a naming pattern? (e.g. feature/..., fix/...)
+  - Is there a convention for commit messages?
+  - How are releases marked? (tags, version numbers, release branches)
+
+  If the team already has these, record them exactly as they work today.
+
+  If they don't — or only partly — suggest this default, explain each part
+  in a sentence, and ask whether to adopt it, change it, or skip it:
+
+    GitHub Flow
+    - The main branch is always releasable. Never force-push it or
+      rewrite its history.
+    - All work happens on short-lived branches made from main:
+        feature/<name>   a new feature
+        fix/<name>       a normal bug fix
+        hotfix/<name>    an urgent fix to what's released, made from the
+                         latest release tag, then merged back into main
+      Names are short, lowercase, hyphenated (feature/export-csv).
+      One topic per branch.
+    - "Done" before merging into main: the checks pass (tests, style
+      check, build), it was tried on the real thing — not only in tests,
+      the docs were updated in the same branch, and the person with
+      authority says it's done.
+    - Merge with a merge commit (git merge --no-ff) so each branch's
+      commits stay grouped, then delete the branch.
+    - Releases are built from main only and tagged vX.Y.Z on the exact
+      commit that was built. The build that was tested is the one that
+      ships — never rebuild after testing.
+
+    Conventional Commits
+    - Each commit message starts with a type, an optional scope (the area
+      of the code), and a short summary: type(scope): what changed
+        feat:      a new feature
+        fix:       a bug fix
+        docs:      documentation only
+        refactor:  a change that neither fixes a bug nor adds a feature
+        test:      adding or correcting tests
+        chore:     builds and housekeeping — version bumps, dependencies
+    - Summary in the imperative ("add", not "added"), under about 72
+      characters. The message body says why.
+    - Example: fix(login): keep the session after a token refresh
+
+  Record what the team chose in [AI-BRIEF] under "Branches and Commits"
+  (or in the shared operating file, if the team says it applies to every
+  project). If the team skipped the default, record that too, so you do
+  not suggest it again.
+
 
 ## SECTION 9 — AI GOVERNANCE FOR THIS PROJECT
 
@@ -439,6 +557,21 @@ If the team indicated they want Architecture Decision Records, also generate:
   docs/decisions/ADR-0001-initial-setup.md
     (capturing the key decisions made or confirmed in this session)
 
+SHARED OPERATING FILE (from Section 0B):
+  - If the team asked you to create one, generate it first, at the
+    location they chose, holding only the rules they said apply to every
+    project. Give it a short change log at the bottom — it may not live
+    in any repository's history.
+  - If one exists or was just created, [AI-BRIEF] starts with:
+      "Shared rules: read [path to the shared file] first. This file
+       adds what is specific to this project and wins where it is
+       more specific."
+    Then [AI-BRIEF] and the docs/ and ai/ files hold only what is specific
+    to this project. Do not copy the shared rules into them.
+  - ai/ai-security-baseline.md always keeps the full Section 10 baseline,
+    even when the shared file has it too. It is the one document that must
+    stand on its own.
+
 
 ## TEAM RESPONSIBILITIES
 
@@ -467,6 +600,9 @@ specific files they are responsible for.
     docs/official-sources.md needs to reflect it
   — When the team outgrows a standard, retire it properly — an outdated rule
     in the AI operating file is worse than no rule
+  — If there is a shared operating file, you own it too. A change to it
+    changes every project — make it on purpose, note it in its change log,
+    and check it at the same retrospective review
 
   LEADERSHIP
   — The AI Team Charter approved in this session is a governance document —
@@ -483,7 +619,8 @@ specific files they are responsible for.
 End the session by telling the team:
 
   1. The exact folder structure to create in the repository
-  2. Which files to save first ([AI-BRIEF] and security.md are highest priority)
+  2. Which files to save first ([AI-BRIEF] and security.md are highest priority;
+     a new shared operating file before either, since [AI-BRIEF] points to it)
   3. Who is responsible for saving the files before this session closes
   4. The standing rule: no architecture change is accepted without the
      corresponding docs update in the same submission
@@ -515,8 +652,30 @@ Read the AI operating file and docs/ before starting any new task. New ideas go 
 
 You own the gate between ideas.md and tasks.md. Nothing moves without a human saying yes. Schedule a repository review at every retrospective. Ask: what do we know now that the repository doesn't reflect yet? When a new team member joins, the repository is their onboarding document. If they find gaps, treat those gaps as bugs. When a vendor changes an API or publishes new security guidance, docs/official-sources.md needs to reflect it. When the team outgrows a standard, retire it properly. An outdated rule in the AI operating file is worse than no rule — it gives the AI confident direction toward the wrong thing.
 
+If you have a shared operating file, you own it as well. It is the most powerful file you have: one edit changes how the AI behaves on every project. Change it deliberately, note each change in its change log, and when a rule shows up in two projects' files, move it up into the shared file instead of keeping two copies that will drift apart.
+
 **Leadership — Your Ongoing Responsibilities**
 
 The AI Team Charter you approved in this session is a governance document. Treat it like one. Review it when the project scope changes significantly. Architecture decisions and security standards require human authority. Make sure it is clear who holds that authority for this project. As the team and the AI system scale, the repository becomes more valuable — not less. The measure of a healthy ground truth environment is simple: can a new team member or a new AI session start productive work within one hour of reading the repository? If not, something is missing.
 
 > The repository teaches the AI. The human teaches the repository. The session is where it begins.
+
+---
+
+## Changes Since the Printed Edition
+
+- **2026-10-07 — Shared operating file.** New term in the introduction and a new Section 0B: the
+  AI looks for an operating file above the project (in the folder that holds all your projects,
+  or in its own personal settings) before asking anything. If it finds one, it uses it and asks
+  only what this project does differently. If not, it asks whether to create one and where. The
+  project's operating file always names the shared file's location, because not every AI tool
+  reads files above the project on its own. Leads own the shared file.
+- **2026-10-07 — Branches and commits.** Section 8 now asks about the team's branching workflow,
+  branch names, commit messages and release tags. A team without them is offered a default —
+  GitHub Flow (`feature/`, `fix/`, `hotfix/` branches from an always-releasable main, tagged
+  releases) and Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`) —
+  to adopt, change or skip.
+- **2026-10-07 — OpenAI file name.** OpenAI's agents read `AGENTS.md` (with an "s"); the printed
+  edition said `AGENT.md`.
+- **2026-10-07 — Delivery.** The chapter can be uploaded as PDF, Word or Markdown, or pointed to
+  directly by an AI tool that works inside your project folder.

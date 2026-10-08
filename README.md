@@ -9,3 +9,4 @@ Pages so they have a stable public URL — kept separate from each app's main (p
 - [CHIRPGo/show-and-tell.html](CHIRPGo/show-and-tell.html) — CHIRP-Go (AT878Sync) feature showcase
 - [N7500Dash/privacy-policy.html](N7500Dash/privacy-policy.html) — N7500 Dashboard privacy policy
 - [N7500Dash/show-and-tell.html](N7500Dash/show-and-tell.html) — N7500 Dashboard feature showcase, with screenshots
+- [AI Teammate/index.html](AI%20Teammate/index.html) — *The AI Teammate* book page, with buy link and the Chapter 15 working edition

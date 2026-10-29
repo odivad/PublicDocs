@@ -256,9 +256,10 @@
     </div>
 
     <div class="status-banner">
-      <strong>Coming soon to Google Play — closed testing is done and it's awaiting production approval.</strong> Every screenshot
-      on this page is from the real app with a real VR-N7500's channels — this
-      tracks what's actually done, not a roadmap.
+      <strong>Now on Google Play — version 1.2.2 adds recording what your radio hears.</strong>
+      <a href="https://play.google.com/store/apps/details?id=com.davidodell.n7500">Get it on Google Play</a>.
+      Every screenshot on this page is from the real app with a real VR-N7500's
+      channels — this tracks what's actually done, not a roadmap.
     </div>
 
     <p class="intro">
@@ -299,6 +300,11 @@
               No radio handy? "Use offline" lets you browse and edit your
               last-known channels and settings anyway
             </li>
+            <li>
+              Notices when the radio is switched off or out of range and goes
+              back to the connect screen, instead of showing "Connected" to a
+              radio that's gone
+            </li>
           </ul>
         </div>
         <div class="shots">
@@ -316,13 +322,21 @@
           <p>
             Frequency, mode, signal strength, squelch, TX power, and Work Mode
             (Single/Dual/Scan) — all synced from the radio in real time, not
-            just read once at connect. A row of labeled buttons across the top
-            is both the status and the control: tap Power to step High → Med →
-            Low, tap Mode to step Single → Dual → Scan. A squelch slider sits
-            right on the S-meter: hold for half a second to unlock it, then
-            drag — a deliberate "lock" so it can't move by accident.
+            just read once at connect. The radio's own controls sit right beside
+            the VFO display: Power (Low, Medium, High) and Work Mode, one tap
+            each. A squelch slider sits right on the S-meter: hold for half a
+            second to unlock it, then drag — a deliberate "lock" so it can't
+            move by accident.
           </p>
           <ul>
+            <li>
+              A station box under the VFO tells you about the repeater you're
+              on: where it is, how far and which way (with a compass arrow),
+              whether you're getting closer, and when it was last heard
+            </li>
+            <li>
+              Choose 3 or 4 channels per row, and 3 or 4 Favorites
+            </li>
             <li>
               Slot A/B channel tiles colored to match the VFO display, so what's
               active and what's standby is obvious at a glance
@@ -407,7 +421,8 @@
             Switch to maps or anything else and a small floating window keeps
             both slots in view — the active channel on top, the last one heard
             below, in the same colors as the dashboard. It only appears while a
-            radio is connected, so it never clutters your screen for nothing.
+            radio is connected and turned on, so it never clutters your screen
+            for nothing.
           </p>
           <ul>
             <li>
@@ -527,9 +542,10 @@
             weather channels as receive-only. More built-in sets — Ham calling
             frequencies, ISS, Marine, Business Itinerant, and Public Safety —
             live under Settings → Built-in channels, ready to add to your
-            Library or turn into a Group. Up to 3 Favorites stay pinned in every
-            Group, so the channels you use most are never one load away from
-            disappearing.
+            Library or turn into a Group (built-in sets are US frequencies, so
+            they show only in the USA). Your 3 or 4 Favorites stay pinned in
+            every Group, so the channels you use most are never one load away
+            from disappearing.
           </p>
           <ul>
             <li>
@@ -537,8 +553,8 @@
               whole set to the radio in one confirmed step
             </li>
             <li>
-              Adding a Favorite asks which of the 3 spots it goes in, showing
-              what's already there, so you can swap or move them
+              Adding a Favorite asks which spot it goes in, showing what's
+              already there, so you can swap or move them
             </li>
             <li>
               Share a Group with another operator through Android's share menu
@@ -561,15 +577,15 @@
       <div class="feature">
         <div class="text">
           <div class="eyebrow">Roam</div>
-          <h2>Find the nearest repeaters, wherever you are</h2>
+          <h2>Fill your radio with the nearest repeaters, wherever you are</h2>
           <p>
-            Roam pulls the closest repeaters from RepeaterBook based on your
-            phone's actual location and loads them straight into the radio — see
-            the fetch location right above the results, with a one-tap Save that
-            names the new Group after that same place. Auto Roam keeps it fresh:
-            turn it on and it re-fetches on its own once you've actually moved
-            far enough (5, 10, 15, or 20 miles, your choice) to need new
-            repeaters — not on a timer, on distance.
+            Roam fills the radio's channels with the closest repeaters, picked on
+            your phone from your actual location, with data courtesy of
+            RepeaterBook.com. RepeaterBook is only asked for your state. See the
+            place it used right above the channels, with a one-tap Save that names
+            the new Group after that same place. Auto Roam does it again on its
+            own once you've moved far enough (5, 10, 15, or 20 miles, your choice)
+            to need new repeaters — not on a timer, on distance.
           </p>
           <ul>
             <li>
@@ -636,6 +652,37 @@
     <div class="features" style="padding-top: 0">
       <div class="feature text-only">
         <div class="text">
+          <div class="eyebrow">New in 1.2 — Record</div>
+          <h2>Hear what you missed</h2>
+          <p>
+            Turn on the recorder and N7500 Dashboard saves every transmission
+            your radio receives — even with the screen off — tagged with the
+            channel it came in on. Missed a call while driving? Tap Replay on
+            the Radio screen for the latest one, or open the Record tab to find
+            any of them by channel and time.
+          </p>
+          <ul>
+            <li>
+              Play back at 0.5× to 2×, play straight through, pin the keepers,
+              and share a clip
+            </li>
+            <li>
+              Only what the radio receives is recorded, never your microphone;
+              clips are saved in your Download/N7500/Recordings folder
+            </li>
+            <li>
+              Set how much space it can use (100 MB to 2 GB); the oldest clips
+              roll off, pinned ones stay
+            </li>
+            <li>
+              Stops on its own when you close the app or switch the radio off
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature text-only">
+        <div class="text">
           <div class="eyebrow">Backup</div>
           <h2>Your channels survive a new phone</h2>
           <p>
@@ -659,7 +706,10 @@
       <p>
         Try it free for 15 days. After your trial, keep using it with a one-time
         lifetime purchase or a low-cost monthly subscription — whichever you
-        prefer. Coming soon to Google Play — awaiting production approval.
+        prefer.
+      </p>
+      <p>
+        <a href="https://play.google.com/store/apps/details?id=com.davidodell.n7500"><strong>Get N7500 Dashboard on Google Play</strong></a>
       </p>
       <p><a href="privacy-policy.html">Privacy Policy</a></p>
     </div>

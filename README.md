@@ -1,12 +1,19 @@
 # PublicDocs
 
-Public-facing documents (privacy policies, etc.) for David O'Dell's apps, hosted via GitHub
-Pages so they have a stable public URL — kept separate from each app's main (private) repo.
+**The official home of these pages is now https://www.mygeeks.com** (repo `odivad/myGeeks`,
+since 2026-10-29). The HTML pages here are only redirects that keep old links — store listings,
+the book — working. Edit the pages in myGeeks, not here.
 
-- [pistardash/privacy-policy.html](pistardash/privacy-policy.html) — PiStarDash privacy policy
-- [pistardash/show-and-tell.html](pistardash/show-and-tell.html) — PiStarDash feature showcase, with screenshots
-- [CHIRPGo/privacy-policy.html](CHIRPGo/privacy-policy.html) — CHIRP-Go (AT878Sync) privacy policy
-- [CHIRPGo/show-and-tell.html](CHIRPGo/show-and-tell.html) — CHIRP-Go (AT878Sync) feature showcase
-- [N7500Dash/privacy-policy.html](N7500Dash/privacy-policy.html) — N7500 Dashboard privacy policy
-- [N7500Dash/show-and-tell.html](N7500Dash/show-and-tell.html) — N7500 Dashboard feature showcase, with screenshots
-- [ai-teammate/index.html](ai-teammate/index.html) — *The AI Teammate* book page, with buy link and the Chapter 15 working edition
+| Old address (this repo)          | Now at                                         |
+| -------------------------------- | ---------------------------------------------- |
+| `index.html`                     | https://www.mygeeks.com/                       |
+| `N7500Dash/privacy-policy.html`  | https://www.mygeeks.com/n7500dash/privacy-policy  |
+| `N7500Dash/show-and-tell.html`   | https://www.mygeeks.com/n7500dash/show-and-tell   |
+| `CHIRPGo/privacy-policy.html`    | https://www.mygeeks.com/chirpgo/privacy-policy    |
+| `CHIRPGo/show-and-tell.html`     | https://www.mygeeks.com/chirpgo/show-and-tell     |
+| `pistardash/privacy-policy.html` | https://www.mygeeks.com/pistardash/privacy-policy |
+| `pistardash/show-and-tell.html`  | https://www.mygeeks.com/pistardash/show-and-tell  |
+| `ai-teammate/index.html`         | https://www.mygeeks.com/ai-teammate/           |
+
+Still served from here: `ai-teammate/Chapter15.md` — the working edition of Chapter 15 of *The AI
+Teammate* (the mygeeks.com book page links to it, read online as `Chapter15.html`).

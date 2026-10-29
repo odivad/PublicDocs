@@ -44,7 +44,7 @@
   </head>
   <body>
     <h1>Privacy Policy — N7500 Dashboard</h1>
-    <p class="updated">Effective date: September 16, 2026</p>
+    <p class="updated">Effective date: October 29, 2026</p>
 
     <p>
       N7500 Dashboard ("the app") is a radio-control utility for the VGC/Vero
@@ -56,10 +56,12 @@
     <h2>Data Collection</h2>
     <p>
       The app does not use analytics, advertising, or crash-reporting services
-      of any kind, and has no account system or backend server of its own. The
+      of any kind (see Ads, below), and has no account system or backend server
+      of its own. The
       one exception, described in full below, is the optional Roam feature: when
-      you use it, your approximate location is sent to RepeaterBook.com to look
-      up nearby repeaters. Nothing else the app does ever leaves your device.
+      you use it, the app asks RepeaterBook.com for the repeaters in your state.
+      Your location itself stays on your phone. Nothing else the app does ever
+      leaves your device.
     </p>
 
     <h2>What Data the App Handles</h2>
@@ -87,16 +89,18 @@
     <ul>
       <li>
         Your phone's current location (latitude/longitude) is read using
-        Android's own location services, then sent to
+        Android's own location services. The app uses it on your phone to work
+        out which state (or states) the search area covers, then asks
         <a href="https://www.repeaterbook.com/">RepeaterBook.com</a>'s public
-        API, along with your RepeaterBook token, to search for nearby repeaters.
-        RepeaterBook.com is a third-party service this app does not control —
-        see its own site for its privacy practices.
+        API for the repeaters in that state, along with your RepeaterBook token.
+        Your coordinates are not sent to RepeaterBook. The app picks the nearest
+        repeaters on your phone. RepeaterBook.com is a third-party service this
+        app does not control — see its own site for its privacy practices.
       </li>
       <li>
         That same location is also passed to Android's built-in
-        reverse-geocoding service (to show a place name like "Austin, TX" above
-        the results) — on most devices this is handled by Google Play services,
+        reverse-geocoding service (to work out your state, and to show a place
+        name like "Austin, TX" above the results) — on most devices this is handled by Google Play services,
         which may itself transmit the coordinates to Google to resolve an
         address. This app does not send your location to Google directly; it
         asks the operating system for a place name and Android decides how to
@@ -149,6 +153,19 @@
       Uninstalling the app deletes this data. Nothing is retained anywhere else,
       other than whatever RepeaterBook.com itself may retain about a Roam
       request on its own servers — see its privacy policy for that.
+    </p>
+
+    <h2>Ads</h2>
+    <p>
+      N7500 Dashboard does not show ads today. If a later version adds them,
+      they will only be shown to people who haven't bought the app or
+      subscribed. They would come from Google AdMob, whose ad software collects
+      your device's advertising ID and other device identifiers, IP address (an
+      approximate location), how you use the app and the ads, and diagnostic
+      information, and sends it to Google, not to us. People in the EU, UK and Switzerland would be asked for
+      consent first, and people in US states with privacy laws would get a way
+      to opt out of personalised ads. This policy will be updated, with the full
+      details, before any version with ads is released.
     </p>
 
     <h2>Children's Privacy</h2>
